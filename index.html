@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유정쌤 | 승무원 입시 전문</title>
+  <meta name="description" content="유정쌤과 함께하는 승무원 입시 준비. 항공사 승무원의 꿈을 현실로 만들어 드립니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-light: #132040;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --rose: #b76e79;
+      --cream: #faf6f0;
+      --white: #ffffff;
+      --gray-100: #f7f7f7;
+      --gray-200: #e8e8e8;
+      --gray-500: #888;
+      --gray-700: #444;
+      --text: #1a1a1a;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ===== CUSTOM SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 0.7rem 2rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(10, 22, 40, 0.92) 0%,
+          rgba(19, 32, 64, 0.85) 40%,
+          rgba(183, 110, 121, 0.3) 100%
+        ),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><linearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" stop-color="%230a1628"/><stop offset="50%25" stop-color="%23132040"/><stop offset="100%25" stop-color="%231a2d5a"/></linearGradient></defs><rect fill="url(%23g)" width="1440" height="900"/></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-particle 8s infinite;
+    }
+
+    @keyframes float-particle {
+      0% { opacity: 0; transform: translateY(100vh) scale(0); }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 24px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      border-radius: 50px;
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      background: rgba(201, 169, 110, 0.08);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .hero-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .hero-title .highlight {
+      position: relative;
+      display: inline-block;
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(201, 169, 110, 0.3);
+    }
+
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: -5px;
+      right: -5px;
+      height: 14px;
+      background: rgba(201, 169, 110, 0.15);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.7s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #d4b67a);
+      color: var(--navy);
+      box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.5);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 169, 110, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      text-align: center;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll i {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.2rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    .section {
+      padding: 100px 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--gray-500);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      background: var(--cream);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      box-shadow: 0 20px 60px rgba(10, 22, 40, 0.2);
+    }
+
+    .about-image-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background:
+        linear-gradient(135deg, rgba(10,22,40,0.85), rgba(19,32,64,0.9)),
+        linear-gradient(45deg, var(--navy) 25%, transparent 25%, transparent 75%, var(--navy) 75%);
+    }
+
+    .about-image-inner .plane-icon {
+      font-size: 4rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      animation: plane-float 3s ease-in-out infinite;
+    }
+
+    @keyframes plane-float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .about-image-inner .name-badge {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-image-inner .name-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+    }
+
+    .about-image-badge .number {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .about-image-badge .label {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .about-text h3 .gold {
+      color: var(--gold);
+    }
+
+    .about-text p {
+      color: var(--gray-700);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-top: 0.3rem;
+    }
+
+    /* ===== YUJUNG HIGHLIGHT SECTION ===== */
+    .yujung-highlight {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 2rem;
+    }
+
+    .yujung-highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .yujung-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .yujung-name {
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), #e8d5b0, var(--gold-light), var(--gold));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: 5px;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(201, 169, 110, 0.2));
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .yujung-tagline {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .yujung-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .yujung-quote {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      line-height: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    .yujung-quote em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* ===== PROGRAMS SECTION ===== */
+    .programs {
+      background: var(--white);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--rose));
+      transform: scaleX(0);
+      transition: var(--transition);
+      transform-origin: left;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      border-color: transparent;
+    }
+
+    .program-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .program-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(201,169,110,0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .program-card h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .program-card p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .program-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 1.2rem;
+    }
+
+    .program-tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      background: var(--cream);
+      color: var(--gray-700);
+      font-weight: 400;
+    }
+
+    /* ===== PROCESS SECTION ===== */
+    .process {
+      background: var(--cream);
+    }
+
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 45px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--gray-200);
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
+    }
+
+    .process-step:hover .step-number {
+      background: var(--gold);
+      color: var(--white);
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(201, 169, 110, 0.3);
+    }
+
+    .process-step h4 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ===== FEATURES SECTION ===== */
+    .features {
+      background: var(--white);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      padding: 2.5rem;
+      border-radius: 16px;
+      background: var(--cream);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-card h4 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials .section-title {
+      color: var(--white);
+    }
+
+    .testimonials .section-desc {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(201,169,110,0.3);
+      transform: translateY(-5px);
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-info strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-info span {
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    /* ===== GALLERY SECTION ===== */
+    .gallery {
+      background: var(--white);
+      padding: 100px 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 250px);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--navy);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg,
+        rgba(10, 22, 40, 0.9),
+        rgba(19, 32, 64, 0.85)
+      );
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-item-inner {
+      background: linear-gradient(135deg,
+        rgba(10, 22, 40, 0.7),
+        rgba(183, 110, 121, 0.3)
+      );
+    }
+
+    .gallery-item-inner i {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-item-inner i {
+      transform: scale(1.2);
+    }
+
+    .gallery-item-inner span {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      font-weight: 300;
+    }
+
+    .gallery-item:nth-child(1) .gallery-item-inner i {
+      font-size: 3.5rem;
+    }
+
+    .gallery-item:nth-child(1) .gallery-item-inner span {
+      font-size: 1rem;
+    }
+
+    .gallery-instagram {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .gallery-instagram a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: 1.5px solid var(--gray-200);
+      transition: var(--transition);
+    }
+
+    .gallery-instagram a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 169, 110, 0.05);
+    }
+
+    .gallery-instagram a i {
+      font-size: 1.3rem;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact {
+      background: var(--cream);
+      position: relative;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .contact-info p {
+      color: var(--gray-500);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .contact-method:hover {
+      border-color: var(--gold);
+      transform: translateX(5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact-method-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method-icon.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+    }
+
+    .contact-method-icon.kakao {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
+
+    .contact-method-icon.phone {
+      background: var(--navy);
+      color: var(--gold);
+    }
+
+    .contact-method-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+
+    .contact-method-text span {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    .contact-form-wrapper {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+
+    .contact-form-wrapper h4 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(10, 22, 40, 0.3);
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--gold), #d4b67a, var(--rose));
+      padding: 60px 2rem;
+      text-align: center;
+    }
+
+    .cta-banner h3 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-banner .btn {
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .cta-banner .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--navy);
+      padding: 60px 2rem 30px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand .nav-logo {
+      font-size: 1.4rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .footer-links h5 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 169, 110, 0.1);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+    }
+
+    /* ===== FLOATING BUTTON ===== */
+    .floating-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #d4b67a);
+      color: var(--navy);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(201, 169, 110, 0.5);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-image {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .process-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process-timeline::before {
+        display: none;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 200px);
+      }
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 22, 40, 0.98);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: 600px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+      }
+
+      .stat-item {
+        padding: 1rem 0.5rem;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .process-timeline {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 180px);
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .section {
+        padding: 70px 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item,
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+        height: 180px;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-image-badge {
+        width: 100px;
+        height: 100px;
+        bottom: -10px;
+        right: -10px;
+      }
+      .about-image-badge .number {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* ===== MOBILE NAV OVERLAY ===== */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+
+    .mobile-overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo"><span>유정</span>쌤</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">소개</a></li>
+      <li><a href="#programs">교육과정</a></li>
+      <li><a href="#process">수업안내</a></li>
+      <li><a href="#features">특장점</a></li>
+      <li><a href="#testimonials">합격후기</a></li>
+      <li><a href="#gallery">갤러리</a></li>
+      <li><a href="#contact">문의하기</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-plane"></i>
+        승무원 입시 전문
+      </div>
+      <h1 class="hero-title">
+        <span class="highlight">유정쌤</span>과 함께<br>
+        하늘 위의 꿈을 현실로
+      </h1>
+      <p class="hero-subtitle">
+        체계적인 커리큘럼과 1:1 맞춤 지도로<br>
+        항공사 승무원 합격의 길을 열어드립니다
+      </p>
+      <div class="hero-cta">
+        <a href="https://www.instagram.com/korea_yujung/" target="_blank" class="btn btn-primary">
+          <i class="fab fa-instagram"></i> 상담 문의하기
+        </a>
+        <a href="#programs" class="btn btn-outline">
+          <i class="fas fa-arrow-down"></i> 교육과정 보기
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      scroll
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="about-image-inner">
+            <i class="fas fa-plane-departure plane-icon"></i>
+            <div class="name-badge">유정쌤</div>
+            <div class="name-sub">CREW ACADEMY INSTRUCTOR</div>
+          </div>
+          <div class="about-image-badge">
+            <div class="number">10+</div>
+            <div class="label">YEARS</div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About</div>
+          <h3>승무원의 꿈,<br><span class="gold">유정쌤</span>이 함께합니다</h3>
+          <p>
+            코리아승무원학원 소속 <strong>유정쌤</strong>은 다년간의 항공 업계 경험과
+            입시 지도 노하우를 바탕으로, 학생 한 명 한 명의 개성과 강점을
+            살린 맞춤형 교육을 제공합니다.
+          </p>
+          <p>
+            면접 준비부터 이미지 메이킹, 영어 인터뷰, 서류 작성까지
+            승무원 입시의 모든 과정을 체계적으로 이끌어
+            높은 합격률을 자랑하고 있습니다.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">수강생 만족도</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">누적 수강생</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">TOP</div>
+              <div class="stat-label">합격률</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yujung Highlight -->
+  <section class="yujung-highlight">
+    <div class="yujung-content reveal">
+      <div class="yujung-tagline">Korea Crew Academy</div>
+      <div class="yujung-name">유정쌤</div>
+      <div class="yujung-divider"></div>
+      <p class="yujung-quote">
+        "꿈을 꾸는 것에서 끝나지 않도록,<br>
+        <em>합격이라는 결과</em>로 함께 만들어 가겠습니다."
+      </p>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="section programs" id="programs">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Programs</div>
+        <h2 class="section-title">맞춤 교육 과정</h2>
+        <p class="section-desc">국내외 항공사 취업을 위한 체계적인 커리큘럼을 제공합니다</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3>면접 완벽 대비</h3>
+          <p>1:1 모의면접, 그룹 토론, 영어 인터뷰 등 실전과 동일한 환경에서 반복 훈련하여 자신감을 높입니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">1:1 면접</span>
+            <span class="program-tag">그룹토론</span>
+            <span class="program-tag">영어면접</span>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>이미지 메이킹</h3>
+          <p>헤어, 메이크업, 스타일링부터 표정, 자세, 워킹까지 항공사가 원하는 이미지를 완성합니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">메이크업</span>
+            <span class="program-tag">스타일링</span>
+            <span class="program-tag">워킹</span>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>서류 & 자기소개서</h3>
+          <p>합격하는 자기소개서 작성법, 이력서 클리닉, 지원서 첨삭까지 서류 전형을 철저히 준비합니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">자기소개서</span>
+            <span class="program-tag">이력서</span>
+            <span class="program-tag">첨삭</span>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3>영어 집중 과정</h3>
+          <p>TOEIC Speaking, 영어 인터뷰, 기내 방송 영어 등 항공사에서 요구하는 영어 실력을 갖춥니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">토익스피킹</span>
+            <span class="program-tag">기내영어</span>
+            <span class="program-tag">회화</span>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>항공운항과 입시</h3>
+          <p>항공운항과 대학 입시를 준비하는 학생들을 위한 전문 컨설팅과 면접 지도를 제공합니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">대입면접</span>
+            <span class="program-tag">학생부</span>
+            <span class="program-tag">컨설팅</span>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">
+            <i class="fas fa-globe-asia"></i>
+          </div>
+          <h3>외항사 특별반</h3>
+          <p>에미레이트, 싱가포르항공, 카타르항공 등 외국 항공사 취업을 위한 맞춤 준비 과정입니다.</p>
+          <div class="program-tags">
+            <span class="program-tag">외항사</span>
+            <span class="program-tag">Open Day</span>
+            <span class="program-tag">CV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Process</div>
+        <h2 class="section-title">합격까지의 여정</h2>
+        <p class="section-desc">유정쌤의 체계적인 4단계 학습 프로세스</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <h4>무료 상담</h4>
+          <p>1:1 상담을 통해 현재 수준을 파악하고 맞춤 학습 로드맵을 설계합니다</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">02</div>
+          <h4>기초 완성</h4>
+          <p>이미지 메이킹, 기본 면접 스킬, 서류 작성 등 탄탄한 기초를 다집니다</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">03</div>
+          <h4>실전 훈련</h4>
+          <p>실제 면접과 동일한 환경에서 반복 훈련하며 실전 감각을 키웁니다</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">04</div>
+          <h4>최종 합격</h4>
+          <p>항공사별 맞춤 전략으로 최종 면접까지 완벽하게 준비합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">유정쌤만의 특장점</h2>
+        <p class="section-desc">차별화된 교육으로 합격의 차이를 만듭니다</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">👩‍✈️</div>
+          <h4>현직 출신 강사진</h4>
+          <p>실무 경험이 풍부한 전현직 승무원 출신 강사가 직접 지도합니다</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🎯</div>
+          <h4>1:1 맞춤 지도</h4>
+          <p>학생 개개인의 장단점을 분석하여 최적화된 개별 맞춤 교육을 진행합니다</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h4>높은 합격률</h4>
+          <p>체계적인 커리큘럼과 밀착 관리로 업계 최상위 합격률을 달성하고 있습니다</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">✈️</div>
+          <h4>최신 채용 정보</h4>
+          <p>국내외 항공사의 실시간 채용 정보와 트렌드를 빠르게 공유합니다</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">💬</div>
+          <h4>소수 정예 수업</h4>
+          <p>소규모 클래스로 운영하여 한 사람 한 사람에게 집중할 수 있습니다</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🏆</div>
+          <h4>합격 후 케어</h4>
+          <p>합격 이후에도 입사 준비와 직무 적응까지 지속적으로 서포트합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Testimonials</div>
+        <h2 class="section-title">합격 수강생 후기</h2>
+        <p class="section-desc">유정쌤과 함께 꿈을 이룬 수강생들의 이야기</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "유정쌤 덕분에 꿈에도 그리던 대한항공에 최종 합격했습니다!
+            면접 때 당황하지 않도록 실전처럼 연습해주신 덕분이에요.
+            정말 감사합니다!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">김○</div>
+            <div class="testimonial-info">
+              <strong>김○은 수강생</strong>
+              <span>대한항공 합격</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "영어 면접이 가장 걱정이었는데, 유정쌤의 체계적인 영어 수업 덕분에
+            자신감을 갖고 면접에 임할 수 있었어요.
+            에미레이트 합격의 일등공신!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">박○</div>
+            <div class="testimonial-info">
+              <strong>박○연 수강생</strong>
+              <span>에미레이트항공 합격</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            "항공운항과 입시를 준비하면서 막막했는데,
+            유정쌤이 하나부터 열까지 꼼꼼하게 챙겨주셔서
+            원하는 대학에 합격할 수 있었습니다!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">이○</div>
+            <div class="testimonial-info">
+              <strong>이○서 수강생</strong>
+              <span>항공운항과 합격</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Gallery</div>
+        <h2 class="section-title">유정쌤의 수업 현장</h2>
+        <p class="section-desc">Instagram @korea_yujung 에서 더 많은 소식을 만나보세요</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>수업 현장</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <i class="fas fa-users"></i>
+            <span>그룹 면접</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <i class="fas fa-trophy"></i>
+            <span>합격 축하</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <i class="fas fa-camera"></i>
+            <span>이미지 메이킹</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <i class="fas fa-comments"></i>
+            <span>영어 인터뷰</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-instagram reveal">
+        <a href="https://www.instagram.com/korea_yujung/" target="_blank">
+          <i class="fab fa-instagram"></i>
+          @korea_yujung 인스타그램 방문하기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <h3>승무원의 꿈, 지금 시작하세요</h3>
+      <p>유정쌤과 함께라면 하늘 위의 꿈이 현실이 됩니다</p>
+      <a href="https://www.instagram.com/korea_yujung/" target="_blank" class="btn">
+        <i class="fab fa-instagram"></i> 무료 상담 신청
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">문의하기</h2>
+        <p class="section-desc">궁금한 점이 있으시면 언제든 편하게 연락주세요</p>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info reveal">
+          <h3>유정쌤에게 직접 상담받으세요</h3>
+          <p>
+            수강 상담, 커리큘럼 문의, 항공사 채용 정보 등
+            승무원 입시에 관한 모든 것을 상담해 드립니다.
+            부담 없이 DM으로 문의해 주세요!
+          </p>
+          <div class="contact-methods">
+            <a href="https://www.instagram.com/korea_yujung/" target="_blank" class="contact-method">
+              <div class="contact-method-icon instagram">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div class="contact-method-text">
+                <strong>Instagram DM</strong>
+                <span>@korea_yujung</span>
+              </div>
+            </a>
+            <a href="#" class="contact-method">
+              <div class="contact-method-icon kakao">
+                <i class="fas fa-comment"></i>
+              </div>
+              <div class="contact-method-text">
+                <strong>카카오톡 상담</strong>
+                <span>빠른 1:1 상담 가능</span>
+              </div>
+            </a>
+            <a href="#" class="contact-method">
+              <div class="contact-method-icon phone">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-method-text">
+                <strong>전화 문의</strong>
+                <span>평일 10:00 - 18:00</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-wrapper reveal">
+          <h4>빠른 상담 신청</h4>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <input type="text" placeholder="이름" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="연락처">
+            </div>
+            <div class="form-group">
+              <select>
+                <option value="" disabled selected>관심 과정 선택</option>
+                <option>국내 항공사 승무원반</option>
+                <option>외국 항공사 승무원반</option>
+                <option>항공운항과 입시반</option>
+                <option>이미지 메이킹</option>
+                <option>영어 면접반</option>
+                <option>기타 문의</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="문의 내용을 입력해 주세요"></textarea>
+            </div>
+            <button type="submit" class="form-submit">상담 신청하기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo"><span>유정</span>쌤</a>
+        <p>
+          코리아승무원학원 소속 유정쌤의 승무원 입시 전문 페이지입니다.
+          체계적인 교육과 진심 어린 지도로 여러분의 꿈을 응원합니다.
+        </p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/korea_yujung/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.koreacrewacademy.com/" target="_blank" aria-label="Website">
+            <i class="fas fa-globe"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h5>교육 과정</h5>
+        <ul>
+          <li><a href="#programs">면접 대비</a></li>
+          <li><a href="#programs">이미지 메이킹</a></li>
+          <li><a href="#programs">영어 집중 과정</a></li>
+          <li><a href="#programs">항공운항과 입시</a></li>
+          <li><a href="#programs">외항사 특별반</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>바로가기</h5>
+        <ul>
+          <li><a href="#about">유정쌤 소개</a></li>
+          <li><a href="#testimonials">합격 후기</a></li>
+          <li><a href="#contact">상담 문의</a></li>
+          <li><a href="https://www.koreacrewacademy.com/" target="_blank">코리아승무원학원</a></li>
+          <li><a href="https://www.instagram.com/korea_yujung/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 유정쌤 승무원 입시. All Rights Reserved.</span>
+      <span>코리아승무원학원</span>
+    </div>
+  </footer>
+
+  <!-- Floating Instagram Button -->
+  <a href="https://www.instagram.com/korea_yujung/" target="_blank" class="floating-btn" aria-label="Instagram 문의">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <script>
+    // === Navigation Scroll Effect ===
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // === Mobile Navigation Toggle ===
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const icon = navToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    // === Particle Effect ===
+    const particlesEl = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 8 + 's';
+      particle.style.animationDuration = (5 + Math.random() * 5) + 's';
+      particle.style.width = particle.style.height = (2 + Math.random() * 3) + 'px';
+      particlesEl.appendChild(particle);
+    }
+
+    // === Scroll Reveal Animation ===
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // === Counter Animation ===
+    const counters = document.querySelectorAll('.stat-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.dataset.animated) return;
+          el.dataset.animated = true;
+
+          const text = el.textContent;
+          if (text === 'TOP') return;
+
+          const match = text.match(/(\d+)/);
+          if (!match) return;
+
+          const target = parseInt(match[1]);
+          const suffix = text.replace(match[1], '');
+          let current = 0;
+          const increment = target / 50;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = Math.floor(current) + suffix;
+          }, 30);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    // === Form Submit Handler ===
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('상담 신청이 접수되었습니다!\nInstagram @korea_yujung 으로 DM 주시면 더 빠른 상담이 가능합니다.');
+      e.target.reset();
+    }
+
+    // === Smooth scroll for anchor links ===
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
