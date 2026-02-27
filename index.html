@@ -3,1610 +3,711 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>홍광비 ♥ 석지윤 결혼합니다</title>
-  <meta name="description" content="홍광비 & 석지윤의 결혼을 알립니다.">
+  <title>긴급 현상수배 - 홍준우</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=Do+Hyeon&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sage: #8fae8b;
-      --sage-light: #c5d8c3;
-      --sage-dark: #5c7a59;
-      --cream: #faf8f4;
-      --warm-white: #fffdf9;
-      --blush: #e8c4b8;
-      --blush-light: #f5e1da;
-      --gold: #b8976a;
-      --gold-light: #d4c4a8;
-      --brown: #6b5b4e;
-      --text: #3a3a3a;
-      --text-light: #7a7a7a;
+      --red-dark: #8b0000;
+      --red: #cc0000;
+      --red-bright: #ff0000;
+      --yellow: #ffd700;
+      --yellow-light: #fff3b0;
+      --black: #0a0a0a;
+      --dark-bg: #1a1a1a;
       --white: #ffffff;
+      --grey: #cccccc;
+      --orange: #ff6600;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     body {
+      background: var(--black);
+      color: var(--white);
       font-family: 'Noto Sans KR', sans-serif;
-      color: var(--text);
-      background: var(--cream);
       overflow-x: hidden;
-      line-height: 1.8;
-      max-width: 100vw;
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--sage-light); border-radius: 4px; }
-
-    /* Container */
-    .invitation-wrap {
-      max-width: 480px;
-      margin: 0 auto;
-      background: var(--white);
-      box-shadow: 0 0 60px rgba(0,0,0,0.06);
-      position: relative;
+    /* 긴급 경고 스트립 */
+    .warning-strip {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--yellow),
+        var(--yellow) 20px,
+        var(--black) 20px,
+        var(--black) 40px
+      );
+      height: 16px;
+      width: 100%;
     }
 
-    /* ===== HERO SECTION ===== */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, #f5f0eb 0%, #faf8f4 50%, var(--white) 100%);
-      padding: 60px 30px;
+    /* 상단 긴급 배너 */
+    .emergency-banner {
+      background: var(--red);
+      padding: 12px;
       text-align: center;
-      overflow: hidden;
+      animation: flashBanner 1.5s ease-in-out infinite;
     }
 
-    .hero::before {
+    .emergency-banner p {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 8px;
+      color: var(--white);
+    }
+
+    @keyframes flashBanner {
+      0%, 100% { background: var(--red); }
+      50% { background: var(--red-dark); }
+    }
+
+    /* 메인 수배 포스터 */
+    .wanted-poster {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 수배 제목 */
+    .wanted-title {
+      text-align: center;
+      padding: 30px 20px 20px;
+      position: relative;
+    }
+
+    .wanted-title::before,
+    .wanted-title::after {
       content: '';
       position: absolute;
-      top: -50px;
       left: 50%;
       transform: translateX(-50%);
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(143,174,139,0.1) 0%, transparent 70%);
-      border-radius: 50%;
+      height: 3px;
+      background: var(--red);
+      width: 80%;
     }
 
-    .hero-leaf {
-      position: absolute;
-      opacity: 0.15;
-      font-size: 24px;
-      color: var(--sage);
-      animation: floatLeaf 8s ease-in-out infinite;
-    }
-    .hero-leaf:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-    .hero-leaf:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
-    .hero-leaf:nth-child(3) { bottom: 30%; left: 8%; animation-delay: 4s; }
-    .hero-leaf:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 6s; }
-    .hero-leaf:nth-child(5) { top: 40%; left: 5%; animation-delay: 1s; }
-    .hero-leaf:nth-child(6) { top: 60%; right: 5%; animation-delay: 3s; }
+    .wanted-title::before { top: 10px; }
+    .wanted-title::after { bottom: 5px; }
 
-    @keyframes floatLeaf {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(10deg); }
+    .wanted-title h1 {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 3.5rem;
+      color: var(--red-bright);
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3);
+      letter-spacing: 15px;
+      animation: glowText 2s ease-in-out infinite;
     }
 
-    .hero-date-top {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      letter-spacing: 6px;
-      color: var(--sage);
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.3s;
-    }
-
-    .hero-ornament {
-      width: 60px;
-      height: 1px;
-      background: var(--sage-light);
-      margin: 0 auto 40px;
-      position: relative;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.5s;
-    }
-    .hero-ornament::before {
-      content: '✦';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 10px;
-      color: var(--sage);
-      background: #f5f0eb;
-      padding: 0 10px;
-    }
-
-    .hero-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      letter-spacing: 8px;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.7s;
-    }
-
-    .hero-names {
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.9s;
-    }
-
-    .hero-names .name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 300;
-      color: var(--brown);
-      letter-spacing: 4px;
-      line-height: 1.4;
-    }
-
-    .hero-names .amp {
-      font-family: 'Great Vibes', cursive;
-      font-size: 36px;
-      color: var(--sage);
-      display: block;
-      margin: 5px 0;
-    }
-
-    .hero-korean-names {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-light);
-      letter-spacing: 3px;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.1s;
-    }
-
-    .hero-date-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      letter-spacing: 3px;
-      color: var(--brown);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.3s;
-    }
-
-    .hero-venue {
-      font-size: 12px;
-      color: var(--text-light);
+    .wanted-subtitle {
+      font-family: 'Do Hyeon', sans-serif;
+      font-size: 1.2rem;
+      color: var(--yellow);
       margin-top: 8px;
-      letter-spacing: 1px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.5s;
+      letter-spacing: 5px;
     }
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.8s;
-    }
-    .scroll-indicator span {
-      display: block;
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--sage-light), transparent);
-      margin: 0 auto;
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; height: 40px; }
-      50% { opacity: 0.8; height: 50px; }
+    @keyframes glowText {
+      0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3); }
+      50% { text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.5), 0 0 80px rgba(255, 0, 0, 0.3); }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== PHOTO FRAME SECTION ===== */
-    .photo-section {
-      padding: 80px 30px;
+    /* 사진 섹션 */
+    .mugshot-section {
       text-align: center;
-      background: var(--white);
-      position: relative;
+      padding: 25px 20px;
     }
 
-    .photo-frame {
+    .mugshot-frame {
+      display: inline-block;
+      position: relative;
+      border: 4px solid var(--red);
+      padding: 5px;
+      background: var(--dark-bg);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .mugshot-frame img {
       width: 280px;
-      margin: 0 auto 30px;
-      position: relative;
-      border: 1px solid var(--sage-light);
-      padding: 15px;
-      background: var(--warm-white);
-    }
-
-    .photo-frame-inner {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      gap: 4px;
-    }
-
-    .photo-frame-inner img {
-      width: 100%;
-      display: block;
+      height: 350px;
       object-fit: cover;
+      display: block;
+      filter: contrast(1.1) brightness(0.95);
     }
 
-    .photo-frame-label {
-      font-family: 'Great Vibes', cursive;
-      font-size: 22px;
-      color: var(--sage);
-      margin-top: 10px;
-    }
-
-    .photo-caption {
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-
-    /* ===== GREETING SECTION ===== */
-    .greeting {
-      padding: 80px 35px;
+    .mugshot-label {
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+      right: -1px;
+      background: rgba(204, 0, 0, 0.9);
+      color: var(--white);
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.3rem;
+      padding: 8px;
+      letter-spacing: 10px;
       text-align: center;
-      background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
     }
 
-    .section-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 12px;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 15px;
+    .stamp {
+      position: absolute;
+      top: 15px;
+      right: -15px;
+      background: transparent;
+      border: 4px solid var(--red-bright);
+      color: var(--red-bright);
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      transform: rotate(15deg);
+      border-radius: 5px;
+      opacity: 0.9;
+      letter-spacing: 3px;
+    }
+
+    /* 인적사항 */
+    .profile-section {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+      border: 1px solid #333;
+      border-left: 4px solid var(--red);
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 0 8px 8px 0;
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 300;
-      color: var(--brown);
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-    }
-
-    .section-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--sage-light);
-      margin: 0 auto 30px;
-    }
-
-    .greeting-text {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 2.2;
-      color: var(--text);
-      word-break: keep-all;
-    }
-
-    .greeting-text p {
-      margin-bottom: 20px;
-    }
-
-    /* ===== COUPLE INFO ===== */
-    .couple-section {
-      padding: 80px 30px;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .couple-profiles {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .couple-card {
-      flex: 1;
-      max-width: 180px;
-      text-align: center;
-    }
-
-    .couple-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .couple-avatar-groom {
-      background: linear-gradient(135deg, var(--sage-light), var(--sage));
-    }
-
-    .couple-avatar-bride {
-      background: linear-gradient(135deg, var(--blush-light), var(--blush));
-    }
-
-    .couple-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .couple-avatar i {
-      font-size: 40px;
-      color: rgba(255,255,255,0.85);
-      line-height: 120px;
-    }
-
-    .couple-role {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 8px;
-    }
-
-    .couple-name-kr {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--brown);
-      margin-bottom: 5px;
-    }
-
-    .couple-and {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.4rem;
+      color: var(--red-bright);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #333;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding-top: 50px;
-    }
-
-    .couple-and span {
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      color: var(--sage);
-    }
-
-    .couple-sns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 12px;
-    }
-
-    .couple-sns a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid var(--sage-light);
-      color: var(--sage);
-      text-decoration: none;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .couple-sns a:hover {
-      background: var(--sage);
-      color: var(--white);
-      border-color: var(--sage);
-    }
-
-    .couple-sns .phone-link {
-      border-color: var(--blush);
-      color: var(--blush);
-    }
-    .couple-sns .phone-link:hover {
-      background: var(--blush);
-      color: var(--white);
-      border-color: var(--blush);
-    }
-
-    /* ===== CALENDAR SECTION ===== */
-    .calendar-section {
-      padding: 80px 30px;
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .calendar {
-      max-width: 320px;
-      margin: 30px auto 0;
-      background: var(--white);
-      border-radius: 12px;
-      padding: 30px 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-
-    .calendar-month {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      color: var(--brown);
-      margin-bottom: 20px;
-      letter-spacing: 3px;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 2px;
-    }
-
-    .calendar-day-header {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-light);
-      padding: 8px 0;
-      letter-spacing: 1px;
-    }
-
-    .calendar-day-header.sun { color: #d4766e; }
-
-    .calendar-day {
-      font-size: 13px;
-      padding: 8px 0;
-      color: var(--text);
-      font-weight: 300;
-      position: relative;
-    }
-
-    .calendar-day.sun { color: #d4766e; }
-    .calendar-day.sat { color: var(--sage); }
-    .calendar-day.empty { visibility: hidden; }
-
-    .calendar-day.wedding-day {
-      background: var(--sage);
-      color: var(--white);
-      border-radius: 50%;
-      font-weight: 500;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-    }
-
-    .calendar-dday {
-      margin-top: 25px;
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 300;
-    }
-
-    .calendar-dday strong {
-      color: var(--sage-dark);
-      font-weight: 500;
-    }
-
-    /* ===== LOCATION SECTION ===== */
-    .location-section {
-      padding: 80px 30px;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .location-info {
-      margin-top: 30px;
-    }
-
-    .location-name {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--brown);
-      margin-bottom: 8px;
-    }
-
-    .location-address {
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 300;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .location-map-placeholder {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #e8e4df 0%, #d5d0ca 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       gap: 10px;
-      margin-bottom: 20px;
     }
 
-    .location-map-placeholder i {
-      font-size: 32px;
-      color: var(--sage);
+    .section-title .icon {
+      font-size: 1.2rem;
     }
 
-    .location-map-placeholder span {
-      font-size: 13px;
-      color: var(--text-light);
+    .info-grid {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 10px 15px;
+      font-size: 0.95rem;
     }
 
-    .location-transport {
-      text-align: left;
-      margin-top: 30px;
-      padding: 25px;
-      background: var(--cream);
-      border-radius: 12px;
-    }
-
-    .transport-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .transport-item:last-child { margin-bottom: 0; }
-
-    .transport-item i {
-      color: var(--sage);
-      font-size: 14px;
-      margin-top: 3px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .transport-item .transport-text {
-      font-size: 13px;
-      color: var(--text);
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .transport-item .transport-label {
-      font-weight: 500;
-      color: var(--brown);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    /* ===== MC SECTION ===== */
-    .mc-section {
-      padding: 60px 30px;
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .mc-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 300px;
-      margin: 20px auto 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-
-    .mc-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 15px;
-    }
-
-    .mc-icon i {
-      font-size: 22px;
-      color: var(--white);
-    }
-
-    .mc-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .mc-name {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--brown);
-    }
-
-    /* ===== ACCOUNT SECTION ===== */
-    .account-section {
-      padding: 80px 30px;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .account-accordion {
-      margin-top: 30px;
-    }
-
-    .account-group {
-      margin-bottom: 15px;
-    }
-
-    .account-toggle {
-      width: 100%;
-      padding: 16px 20px;
-      background: var(--cream);
-      border: 1px solid rgba(143,174,139,0.2);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 14px;
-      color: var(--brown);
-    }
-
-    .account-toggle:hover {
-      background: var(--sage-light);
-      color: var(--white);
-    }
-
-    .account-toggle i {
-      transition: transform 0.3s ease;
-      font-size: 12px;
-    }
-
-    .account-toggle.active i {
-      transform: rotate(180deg);
-    }
-
-    .account-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .account-details.open {
-      max-height: 200px;
-    }
-
-    .account-info {
-      padding: 20px;
-      background: var(--warm-white);
-      border: 1px solid rgba(143,174,139,0.1);
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-    }
-
-    .account-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 0;
-    }
-
-    .account-row span {
-      font-size: 13px;
-      color: var(--text);
-      font-weight: 300;
-    }
-
-    .account-copy {
-      padding: 6px 14px;
-      background: var(--sage);
-      color: var(--white);
-      border: none;
-      border-radius: 20px;
-      font-size: 11px;
-      cursor: pointer;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: all 0.3s ease;
-    }
-
-    .account-copy:hover {
-      background: var(--sage-dark);
-    }
-
-    /* ===== MESSAGE SECTION ===== */
-    .message-section {
-      padding: 80px 30px;
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .guestbook {
-      margin-top: 30px;
-    }
-
-    .guestbook-input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid rgba(143,174,139,0.3);
-      border-radius: 8px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 13px;
-      resize: none;
-      height: 100px;
-      margin-bottom: 10px;
-      background: var(--white);
-      transition: border-color 0.3s ease;
-    }
-
-    .guestbook-input:focus {
-      outline: none;
-      border-color: var(--sage);
-    }
-
-    .guestbook-name {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid rgba(143,174,139,0.3);
-      border-radius: 8px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 13px;
-      margin-bottom: 10px;
-      background: var(--white);
-      transition: border-color 0.3s ease;
-    }
-
-    .guestbook-name:focus {
-      outline: none;
-      border-color: var(--sage);
-    }
-
-    .guestbook-submit {
-      width: 100%;
-      padding: 14px;
-      background: var(--sage);
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .guestbook-submit:hover {
-      background: var(--sage-dark);
-    }
-
-    .guestbook-messages {
-      margin-top: 25px;
-    }
-
-    .guestbook-msg {
-      background: var(--white);
-      padding: 18px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    .guestbook-msg-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--sage-dark);
-      margin-bottom: 5px;
-    }
-
-    .guestbook-msg-text {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .guestbook-msg-date {
-      font-size: 11px;
-      color: var(--text-light);
-      margin-top: 8px;
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      padding: 60px 30px 40px;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .footer-flower {
-      font-size: 30px;
-      color: var(--sage-light);
-      margin-bottom: 20px;
-    }
-
-    .footer-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 300;
-      color: var(--brown);
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .footer-date {
-      font-size: 12px;
-      color: var(--text-light);
-      font-weight: 300;
+    .info-label {
+      color: var(--grey);
+      font-weight: 700;
+      font-size: 0.85rem;
       letter-spacing: 1px;
-      margin-bottom: 30px;
     }
 
-    .footer-share {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 30px;
+    .info-value {
+      color: var(--white);
+      font-weight: 500;
     }
 
-    .footer-share-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1px solid var(--sage-light);
-      color: var(--sage);
+    .info-value.highlight {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    .info-value a {
+      color: var(--yellow);
       text-decoration: none;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      background: none;
+      transition: color 0.3s;
     }
 
-    .footer-share-btn:hover {
-      background: var(--sage);
+    .info-value a:hover {
+      color: var(--orange);
+      text-decoration: underline;
+    }
+
+    /* 범죄 경력 */
+    .crimes-section {
+      background: linear-gradient(135deg, #1a1a1a 0%, #1a1a2a 100%);
+      border: 1px solid #333;
+      border-left: 4px solid var(--orange);
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .crime-list {
+      list-style: none;
+    }
+
+    .crime-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .crime-item:last-child {
+      border-bottom: none;
+    }
+
+    .crime-number {
+      background: var(--red);
       color: var(--white);
-      border-color: var(--sage);
-    }
-
-    .footer-copyright {
-      font-size: 11px;
-      color: var(--text-light);
-      font-weight: 300;
-    }
-
-    /* ===== RSVP FLOATING BUTTON ===== */
-    .rsvp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      display: none;
-    }
-
-    .rsvp-float.show { display: block; }
-
-    .rsvp-float-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--sage);
-      color: var(--white);
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(143,174,139,0.4);
-      transition: all 0.3s ease;
+      font-family: 'Black Han Sans', sans-serif;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+      font-size: 0.9rem;
     }
 
-    .rsvp-float-btn:hover {
-      transform: scale(1.1);
-      background: var(--sage-dark);
+    .crime-content {
+      flex: 1;
     }
 
-    /* ===== ANIMATIONS ===== */
-    .reveal {
+    .crime-title {
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .crime-detail {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    .crime-sentence {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 3px;
+      letter-spacing: 1px;
+    }
+
+    .sentence-death {
+      background: var(--red-dark);
+      color: #ff6666;
+      border: 1px solid var(--red);
+    }
+
+    .sentence-life {
+      background: #1a1a3a;
+      color: #6688ff;
+      border: 1px solid #3344aa;
+    }
+
+    /* 판결 요약 */
+    .verdict-section {
+      background: linear-gradient(135deg, #2a0a0a 0%, #1a0a0a 100%);
+      border: 2px solid var(--red);
+      margin: 25px 0;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .verdict-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 0, 0, 0.03) 2px,
+        rgba(255, 0, 0, 0.03) 4px
+      );
+      pointer-events: none;
+    }
+
+    .verdict-label {
+      font-family: 'Do Hyeon', sans-serif;
+      font-size: 1rem;
+      color: var(--grey);
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+
+    .verdict-result {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 3rem;
+      color: var(--red-bright);
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      letter-spacing: 10px;
+      animation: verdictPulse 3s ease-in-out infinite;
+    }
+
+    .verdict-detail {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @keyframes verdictPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.02); opacity: 0.9; }
+    }
+
+    /* 신고 섹션 */
+    .report-section {
+      background: linear-gradient(135deg, #1a2a1a 0%, #1a1a1a 100%);
+      border: 1px solid #333;
+      border-left: 4px solid var(--yellow);
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 0 8px 8px 0;
+      text-align: center;
+    }
+
+    .report-section .section-title {
+      color: var(--yellow);
+      justify-content: center;
+    }
+
+    .reward-amount {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 2.5rem;
+      color: var(--yellow);
+      margin: 15px 0;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .report-info {
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .report-info strong {
+      color: var(--white);
+    }
+
+    .call-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 40px;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      letter-spacing: 3px;
+      transition: all 0.3s;
+      border: 2px solid var(--red-bright);
+    }
+
+    .call-btn:hover {
+      background: var(--red-bright);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* SNS 섹션 */
+    .sns-section {
+      text-align: center;
+      margin: 15px 0;
+      padding: 15px;
+    }
+
+    .sns-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--grey);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      border: 1px solid #333;
+      border-radius: 25px;
+      transition: all 0.3s;
+    }
+
+    .sns-link:hover {
+      color: var(--white);
+      border-color: #e1306c;
+      background: rgba(225, 48, 108, 0.1);
+    }
+
+    .sns-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* 경고 푸터 */
+    .footer-warning {
+      text-align: center;
+      padding: 25px 20px;
+      color: #555;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .footer-warning .disclaimer {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #222;
+      color: #444;
+      font-size: 0.7rem;
+    }
+
+    /* 깜빡임 효과 */
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* 스크롤 바 */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red-dark); border-radius: 4px; }
+
+    /* 반응형 */
+    @media (max-width: 480px) {
+      .wanted-title h1 {
+        font-size: 2.5rem;
+        letter-spacing: 10px;
+      }
+      .mugshot-frame img {
+        width: 220px;
+        height: 280px;
+      }
+      .verdict-result {
+        font-size: 2.2rem;
+      }
+      .reward-amount {
+        font-size: 2rem;
+      }
+      .info-grid {
+        grid-template-columns: 85px 1fr;
+      }
+    }
+
+    /* 로딩 효과 */
+    .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .reveal.visible {
+    .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ===== TOAST ===== */
-    .toast {
-      position: fixed;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: var(--brown);
-      color: var(--white);
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 13px;
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 200;
-      white-space: nowrap;
+    /* 사이렌 효과 */
+    .siren-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--red), var(--red-bright), var(--red));
+      background-size: 200% 100%;
+      animation: sirenMove 1s linear infinite;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ===== D-DAY COUNTER ===== */
-    .dday-counter {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 25px;
-    }
-
-    .dday-item {
-      text-align: center;
-    }
-
-    .dday-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 300;
-      color: var(--sage-dark);
-      line-height: 1;
-    }
-
-    .dday-label {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 2px;
-      margin-top: 5px;
-    }
-
-    /* ===== GALLERY SECTION ===== */
-    .gallery-section {
-      padding: 80px 30px;
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      margin-top: 30px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .gallery-item {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, var(--sage-light), var(--blush-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gallery-item::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0);
-      transition: background 0.3s ease;
-    }
-
-    .gallery-item:hover::before {
-      background: rgba(0,0,0,0.1);
-    }
-
-    .gallery-item i {
-      font-size: 24px;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .gallery-item:nth-child(even) {
-      background: linear-gradient(135deg, var(--blush-light), var(--sage-light));
-    }
-
-    .gallery-instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 25px;
-      padding: 12px 24px;
-      border: 1px solid var(--sage-light);
-      border-radius: 30px;
-      color: var(--sage-dark);
-      text-decoration: none;
-      font-size: 13px;
-      transition: all 0.3s ease;
-    }
-
-    .gallery-instagram-link:hover {
-      background: var(--sage);
-      color: var(--white);
-      border-color: var(--sage);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 380px) {
-      .hero-names .name { font-size: 34px; }
-      .couple-profiles { gap: 12px; }
-      .couple-avatar { width: 100px; height: 100px; }
-      .couple-avatar i { line-height: 100px; font-size: 34px; }
+    @keyframes sirenMove {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
     }
   </style>
 </head>
 <body>
 
-<div class="invitation-wrap">
+  <div class="warning-strip"></div>
+  <div class="siren-bar"></div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-leaf">🌿</div>
-    <div class="hero-leaf">🍃</div>
-    <div class="hero-leaf">🌿</div>
-    <div class="hero-leaf">🍃</div>
-    <div class="hero-leaf">🌿</div>
-    <div class="hero-leaf">🍃</div>
+  <div class="emergency-banner">
+    <p class="blink">긴 급 현 상 수 배</p>
+  </div>
 
-    <div class="hero-date-top">2026. 05. 16</div>
-    <div class="hero-ornament"></div>
-    <div class="hero-label">Wedding Invitation</div>
+  <div class="siren-bar"></div>
 
-    <div class="hero-names">
-      <div class="name">광비</div>
-      <span class="amp">and</span>
-      <div class="name">지윤</div>
+  <div class="wanted-poster">
+
+    <!-- 수배 제목 -->
+    <div class="wanted-title fade-in">
+      <h1>현 상 수 배</h1>
+      <p class="wanted-subtitle">WANTED - MOST DANGEROUS</p>
     </div>
 
-    <div class="hero-korean-names">홍광비 그리고 석지윤</div>
-
-    <div class="hero-date-main">2026년 5월 16일 토요일 오후 2시</div>
-    <div class="hero-venue">서울 강남구 그랜드 웨딩홀 3층</div>
-
-    <div class="scroll-indicator">
-      <span></span>
-    </div>
-  </section>
-
-  <!-- ===== PHOTO ===== -->
-  <section class="photo-section">
-    <div class="photo-frame reveal">
-      <div class="photo-frame-inner">
-        <img src="jun.png" alt="홍광비">
-        <img src="ji.png" alt="석지윤">
-      </div>
-      <div class="photo-frame-label">Our Love Story</div>
-    </div>
-    <p class="photo-caption reveal">우리의 아름다운 시작</p>
-  </section>
-
-  <!-- ===== GREETING ===== -->
-  <section class="greeting">
-    <div class="section-label reveal">Invitation</div>
-    <div class="section-title reveal">소중한 분들을 초대합니다</div>
-    <div class="section-divider reveal"></div>
-    <div class="greeting-text reveal">
-      <p>
-        서로 다른 길을 걸어온 두 사람이<br>
-        이제 같은 길을 함께 걸어가려 합니다.
-      </p>
-      <p>
-        저희 두 사람이 사랑의 이름으로<br>
-        지금까지 서로 함께 했던 것처럼<br>
-        앞으로의 날들도 변함없이<br>
-        함께하려 합니다.
-      </p>
-      <p>
-        바쁘시더라도 오셔서<br>
-        축복해 주시면 더없는 기쁨이겠습니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== COUPLE INFO ===== -->
-  <section class="couple-section">
-    <div class="section-label reveal">The Couple</div>
-    <div class="section-title reveal">신랑 & 신부</div>
-    <div class="section-divider reveal"></div>
-
-    <div class="couple-profiles reveal">
-      <div class="couple-card">
-        <div class="couple-avatar couple-avatar-groom">
-          <img src="jun.png" alt="홍광비">
-        </div>
-        <div class="couple-role">Groom</div>
-        <div class="couple-name-kr">홍광비</div>
-        <div class="couple-sns">
-          <a href="https://instagram.com/_junwoo_h" target="_blank" title="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="tel:010-3667-1302" class="phone-link" title="전화하기">
-            <i class="fas fa-phone"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="couple-and">
-        <span>&</span>
-      </div>
-
-      <div class="couple-card">
-        <div class="couple-avatar couple-avatar-bride">
-          <img src="ji.png" alt="석지윤">
-        </div>
-        <div class="couple-role">Bride</div>
-        <div class="couple-name-kr">석지윤</div>
-        <div class="couple-sns">
-          <a href="https://instagram.com/s_jiyooooon" target="_blank" title="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
+    <!-- 사진 -->
+    <div class="mugshot-section fade-in">
+      <div class="mugshot-frame">
+        <img src="jun.png" alt="수배자 사진">
+        <div class="mugshot-label">수 배 자</div>
+        <div class="stamp">극 악</div>
       </div>
     </div>
-  </section>
 
-  <!-- ===== CALENDAR ===== -->
-  <section class="calendar-section">
-    <div class="section-label reveal">When</div>
-    <div class="section-title reveal">2026년 5월 16일</div>
-    <div class="section-divider reveal"></div>
+    <!-- 인적사항 -->
+    <div class="profile-section fade-in">
+      <div class="section-title">
+        <span class="icon">&#9888;</span> 수배자 인적사항
+      </div>
+      <div class="info-grid">
+        <span class="info-label">성 명</span>
+        <span class="info-value highlight">홍준우</span>
 
-    <div class="calendar reveal">
-      <div class="calendar-month">May 2026</div>
-      <div class="calendar-grid">
-        <!-- Headers -->
-        <div class="calendar-day-header sun">S</div>
-        <div class="calendar-day-header">M</div>
-        <div class="calendar-day-header">T</div>
-        <div class="calendar-day-header">W</div>
-        <div class="calendar-day-header">T</div>
-        <div class="calendar-day-header">F</div>
-        <div class="calendar-day-header">S</div>
-        <!-- Week 1 (May 2026 starts on Friday) -->
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day">1</div>
-        <div class="calendar-day sat">2</div>
-        <!-- Week 2 -->
-        <div class="calendar-day sun">3</div>
-        <div class="calendar-day">4</div>
-        <div class="calendar-day">5</div>
-        <div class="calendar-day">6</div>
-        <div class="calendar-day">7</div>
-        <div class="calendar-day">8</div>
-        <div class="calendar-day sat">9</div>
-        <!-- Week 3 -->
-        <div class="calendar-day sun">10</div>
-        <div class="calendar-day">11</div>
-        <div class="calendar-day">12</div>
-        <div class="calendar-day">13</div>
-        <div class="calendar-day">14</div>
-        <div class="calendar-day">15</div>
-        <div class="calendar-day sat"><div class="wedding-day">16</div></div>
-        <!-- Week 4 -->
-        <div class="calendar-day sun">17</div>
-        <div class="calendar-day">18</div>
-        <div class="calendar-day">19</div>
-        <div class="calendar-day">20</div>
-        <div class="calendar-day">21</div>
-        <div class="calendar-day">22</div>
-        <div class="calendar-day sat">23</div>
-        <!-- Week 5 -->
-        <div class="calendar-day sun">24</div>
-        <div class="calendar-day">25</div>
-        <div class="calendar-day">26</div>
-        <div class="calendar-day">27</div>
-        <div class="calendar-day">28</div>
-        <div class="calendar-day">29</div>
-        <div class="calendar-day sat">30</div>
-        <!-- Week 6 -->
-        <div class="calendar-day sun">31</div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-        <div class="calendar-day empty"></div>
-      </div>
+        <span class="info-label">수배등급</span>
+        <span class="info-value" style="color: #ff4444; font-weight: 900;">S급 (최상위)</span>
 
-      <div class="calendar-dday" id="dday-text"></div>
-    </div>
+        <span class="info-label">위험도</span>
+        <span class="info-value" style="color: var(--red-bright);">&#9733;&#9733;&#9733;&#9733;&#9733; 극도로 위험</span>
 
-    <div class="dday-counter reveal">
-      <div class="dday-item">
-        <div class="dday-number" id="dday-days">--</div>
-        <div class="dday-label">DAYS</div>
-      </div>
-      <div class="dday-item">
-        <div class="dday-number" id="dday-hours">--</div>
-        <div class="dday-label">HOURS</div>
-      </div>
-      <div class="dday-item">
-        <div class="dday-number" id="dday-mins">--</div>
-        <div class="dday-label">MINS</div>
-      </div>
-      <div class="dday-item">
-        <div class="dday-number" id="dday-secs">--</div>
-        <div class="dday-label">SECS</div>
+        <span class="info-label">상태</span>
+        <span class="info-value blink" style="color: var(--orange);">도주 중</span>
+
+        <span class="info-label">SNS</span>
+        <span class="info-value"><a href="https://instagram.com/_junwoo_h" target="_blank">@_junwoo_h (감시 중)</a></span>
+
+        <span class="info-label">연락처</span>
+        <span class="info-value">010-3667-1302</span>
       </div>
     </div>
-  </section>
 
-  <!-- ===== GALLERY ===== -->
-  <section class="gallery-section">
-    <div class="section-label reveal">Gallery</div>
-    <div class="section-title reveal">우리의 순간들</div>
-    <div class="section-divider reveal"></div>
-
-    <div class="gallery-grid reveal">
-      <div class="gallery-item"><i class="fas fa-heart"></i></div>
-      <div class="gallery-item"><i class="fas fa-camera"></i></div>
-      <div class="gallery-item"><i class="fas fa-star"></i></div>
-      <div class="gallery-item"><i class="fas fa-ring"></i></div>
-      <div class="gallery-item"><i class="fas fa-champagne-glasses"></i></div>
-      <div class="gallery-item"><i class="fas fa-heart"></i></div>
-      <div class="gallery-item"><i class="fas fa-dove"></i></div>
-      <div class="gallery-item"><i class="fas fa-cake-candles"></i></div>
-      <div class="gallery-item"><i class="fas fa-music"></i></div>
+    <!-- 범죄 경력 -->
+    <div class="crimes-section fade-in">
+      <div class="section-title" style="color: var(--orange);">
+        <span class="icon">&#128274;</span> 주요 범죄 경력
+      </div>
+      <ul class="crime-list">
+        <li class="crime-item">
+          <div class="crime-number">1</div>
+          <div class="crime-content">
+            <div class="crime-title">전국민 심장 도둑 사건</div>
+            <div class="crime-detail">잘생긴 외모를 무기로 전국민의 심장을 무차별 강탈. 피해자 수 측정 불가.</div>
+            <span class="crime-sentence sentence-death">사형 선고</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">2</div>
+          <div class="crime-content">
+            <div class="crime-title">대규모 매력 살포 사건</div>
+            <div class="crime-detail">인스타그램을 통해 전국에 치명적 매력을 대량 살포. SNS 마비 사태 초래.</div>
+            <span class="crime-sentence sentence-life">무기징역</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">3</div>
+          <div class="crime-content">
+            <div class="crime-title">연쇄 심쿵 유발 사건</div>
+            <div class="crime-detail">미소만으로 불특정 다수에게 연쇄적 심쿵을 유발. 전국 병원 심장내과 마비.</div>
+            <span class="crime-sentence sentence-death">사형 선고</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">4</div>
+          <div class="crime-content">
+            <div class="crime-title">존잘죄 (존재 자체가 잘생긴 죄)</div>
+            <div class="crime-detail">태어남과 동시에 범죄 성립. 대한민국 헌정 사상 최초의 존잘죄 적용 사례.</div>
+            <span class="crime-sentence sentence-life">무기징역</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">5</div>
+          <div class="crime-content">
+            <div class="crime-title">분위기 파괴 사건</div>
+            <div class="crime-detail">어디를 가든 혼자 분위기를 독차지하여 주변인들의 존재감을 조직적으로 소멸시킴.</div>
+            <span class="crime-sentence sentence-death">사형 선고</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">6</div>
+          <div class="crime-content">
+            <div class="crime-title">전국 거울 품절 대란 사건</div>
+            <div class="crime-detail">본인의 잘생긴 얼굴 확인을 위해 전국 거울을 독점 사용. 거울 품절 사태 주모자.</div>
+            <span class="crime-sentence sentence-life">무기징역</span>
+          </div>
+        </li>
+        <li class="crime-item">
+          <div class="crime-number">7</div>
+          <div class="crime-content">
+            <div class="crime-title">국가 경쟁력 훼손 사건</div>
+            <div class="crime-detail">지나치게 잘생긴 외모로 인해 국민 생산성 급감. GDP 하락의 원인으로 지목됨.</div>
+            <span class="crime-sentence sentence-death">사형 선고</span>
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <div class="reveal" style="margin-top:25px;">
-      <a href="https://instagram.com/_junwoo_h" target="_blank" class="gallery-instagram-link">
-        <i class="fab fa-instagram"></i> 신랑 인스타그램
-      </a>
-      <br><br>
-      <a href="https://instagram.com/s_jiyooooon" target="_blank" class="gallery-instagram-link">
-        <i class="fab fa-instagram"></i> 신부 인스타그램
+    <!-- 최종 판결 -->
+    <div class="verdict-section fade-in">
+      <div class="verdict-label">대 한 민 국 대 법 원 최 종 판 결</div>
+      <div class="verdict-result">사 형</div>
+      <div class="verdict-detail">죄명: 존재 자체가 범죄급 잘생김 | 사건번호: 2026형제1302호</div>
+    </div>
+
+    <!-- 신고 안내 -->
+    <div class="report-section fade-in">
+      <div class="section-title">
+        <span class="icon">&#128176;</span> 현상금 안내
+      </div>
+      <div class="reward-amount">&#8361; 999,999,999,999</div>
+      <div class="report-info">
+        해당 수배자를 목격하신 분은 즉시 신고 바랍니다.<br>
+        <strong>절대 단독 접근 금지</strong> - 치명적 매력에 노출될 수 있습니다.<br>
+        목격 즉시 시선을 돌리고 아래 번호로 연락하세요.
+      </div>
+      <a href="tel:010-3667-1302" class="call-btn">&#128222; 신고하기</a>
+    </div>
+
+    <!-- SNS -->
+    <div class="sns-section fade-in">
+      <a href="https://instagram.com/_junwoo_h" target="_blank" class="sns-link">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @_junwoo_h 추적 중
       </a>
     </div>
-  </section>
 
-  <!-- ===== MC ===== -->
-  <section class="mc-section">
-    <div class="section-label reveal">Master of Ceremonies</div>
-    <div class="section-title reveal">사회자 소개</div>
-    <div class="section-divider reveal"></div>
-
-    <div class="mc-card reveal">
-      <div class="mc-icon">
-        <i class="fas fa-microphone"></i>
-      </div>
-      <div class="mc-label">MC</div>
-      <div class="mc-name">강정훈</div>
-    </div>
-  </section>
-
-  <!-- ===== LOCATION ===== -->
-  <section class="location-section">
-    <div class="section-label reveal">Location</div>
-    <div class="section-title reveal">오시는 길</div>
-    <div class="section-divider reveal"></div>
-
-    <div class="location-info reveal">
-      <div class="location-name">그랜드 웨딩홀 3층 그랜드볼룸</div>
-      <div class="location-address">
-        서울특별시 강남구 테헤란로 123<br>
-        지하철 2호선 강남역 3번 출구 도보 5분
-      </div>
-
-      <div class="location-map-placeholder">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>지도 보기</span>
-      </div>
-
-      <div class="location-transport">
-        <div class="transport-item">
-          <i class="fas fa-subway"></i>
-          <div class="transport-text">
-            <span class="transport-label">지하철</span>
-            2호선 강남역 3번 출구에서 도보 5분
-          </div>
-        </div>
-        <div class="transport-item">
-          <i class="fas fa-bus"></i>
-          <div class="transport-text">
-            <span class="transport-label">버스</span>
-            강남역 정류장 하차 (146, 341, 360)
-          </div>
-        </div>
-        <div class="transport-item">
-          <i class="fas fa-car"></i>
-          <div class="transport-text">
-            <span class="transport-label">자가용</span>
-            건물 내 지하주차장 이용 가능 (2시간 무료)
-          </div>
-        </div>
+    <!-- 푸터 -->
+    <div class="footer-warning">
+      &#9888; 본 수배령은 대한민국 잘생김방지법 제1조에 의거하여 발부되었습니다.<br>
+      수배자 접근 시 심장 박동 이상, 얼굴 붉어짐 등의 증상이 나타날 수 있습니다.
+      <div class="disclaimer">
+        &#8251; 본 사이트는 장난으로 제작되었으며 실제 범죄와 무관합니다 &#8251;
       </div>
     </div>
-  </section>
 
-  <!-- ===== ACCOUNT ===== -->
-  <section class="account-section">
-    <div class="section-label reveal">Gift</div>
-    <div class="section-title reveal">마음 전하실 곳</div>
-    <div class="section-divider reveal"></div>
+  </div>
 
-    <div class="account-accordion reveal">
-      <div class="account-group">
-        <button class="account-toggle" onclick="toggleAccount(this)">
-          <span>🤵 신랑측 계좌번호</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="account-details">
-          <div class="account-info">
-            <div class="account-row">
-              <span>카카오뱅크 3333-00-0000000</span>
-              <button class="account-copy" onclick="copyAccount('3333-00-0000000')">복사</button>
-            </div>
-            <div class="account-row">
-              <span>예금주: 홍광비</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="siren-bar"></div>
+  <div class="warning-strip"></div>
 
-      <div class="account-group">
-        <button class="account-toggle" onclick="toggleAccount(this)">
-          <span>👰 신부측 계좌번호</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="account-details">
-          <div class="account-info">
-            <div class="account-row">
-              <span>카카오뱅크 3333-00-0000000</span>
-              <button class="account-copy" onclick="copyAccount('3333-00-0000000')">복사</button>
-            </div>
-            <div class="account-row">
-              <span>예금주: 석지윤</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== MESSAGE ===== -->
-  <section class="message-section">
-    <div class="section-label reveal">Message</div>
-    <div class="section-title reveal">축하 메시지</div>
-    <div class="section-divider reveal"></div>
-
-    <div class="guestbook reveal">
-      <input type="text" class="guestbook-name" placeholder="이름" id="guestName">
-      <textarea class="guestbook-input" placeholder="축하 메시지를 남겨주세요 💕" id="guestMessage"></textarea>
-      <button class="guestbook-submit" onclick="addMessage()">축하 메시지 남기기</button>
-
-      <div class="guestbook-messages" id="guestMessages">
-        <!-- Default messages -->
-        <div class="guestbook-msg">
-          <div class="guestbook-msg-name">강정훈</div>
-          <div class="guestbook-msg-text">광비, 지윤 결혼 진심으로 축하해! 두 사람이 만들어갈 아름다운 미래를 응원합니다. 사회 맡겨줘서 영광이야! 🎤✨</div>
-          <div class="guestbook-msg-date">2026.05.01</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <section class="footer">
-    <div class="footer-flower reveal">🌿</div>
-    <div class="footer-names reveal">광비 & 지윤</div>
-    <div class="footer-date reveal">2026. 05. 16. SAT PM 2:00</div>
-
-    <div class="footer-share reveal">
-      <button class="footer-share-btn" onclick="shareKakao()" title="카카오톡 공유">
-        <i class="fas fa-comment"></i>
-      </button>
-      <button class="footer-share-btn" onclick="copyLink()" title="링크 복사">
-        <i class="fas fa-link"></i>
-      </button>
-    </div>
-
-    <div class="footer-copyright">
-      Made with 🤍 for 광비 & 지윤
-    </div>
-  </section>
-
-</div>
-
-<!-- RSVP Float -->
-<div class="rsvp-float" id="rsvpFloat">
-  <button class="rsvp-float-btn" onclick="document.querySelector('.message-section').scrollIntoView({behavior:'smooth'})">
-    <i class="fas fa-envelope"></i>
-  </button>
-</div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
-<script>
-  // ===== D-DAY COUNTER =====
-  const weddingDate = new Date('2026-05-16T14:00:00+09:00');
-
-  function updateCounter() {
-    const now = new Date();
-    const diff = weddingDate - now;
-
-    if (diff <= 0) {
-      document.getElementById('dday-days').textContent = '0';
-      document.getElementById('dday-hours').textContent = '0';
-      document.getElementById('dday-mins').textContent = '0';
-      document.getElementById('dday-secs').textContent = '0';
-      document.getElementById('dday-text').innerHTML = '<strong>오늘 결혼식 날입니다!</strong>';
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('dday-days').textContent = days;
-    document.getElementById('dday-hours').textContent = hours;
-    document.getElementById('dday-mins').textContent = mins;
-    document.getElementById('dday-secs').textContent = secs;
-    document.getElementById('dday-text').innerHTML = '결혼식까지 <strong>D-' + days + '</strong>';
-  }
-
-  updateCounter();
-  setInterval(updateCounter, 1000);
-
-  // ===== SCROLL REVEAL =====
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  reveals.forEach(el => observer.observe(el));
-
-  // ===== RSVP FLOAT =====
-  window.addEventListener('scroll', () => {
-    const float = document.getElementById('rsvpFloat');
-    if (window.scrollY > 500) {
-      float.classList.add('show');
-    } else {
-      float.classList.remove('show');
-    }
-  });
-
-  // ===== ACCOUNT TOGGLE =====
-  function toggleAccount(btn) {
-    const details = btn.nextElementSibling;
-    const isOpen = details.classList.contains('open');
-
-    // Close all
-    document.querySelectorAll('.account-details').forEach(d => d.classList.remove('open'));
-    document.querySelectorAll('.account-toggle').forEach(b => b.classList.remove('active'));
-
-    if (!isOpen) {
-      details.classList.add('open');
-      btn.classList.add('active');
-    }
-  }
-
-  // ===== COPY ACCOUNT =====
-  function copyAccount(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast('계좌번호가 복사되었습니다');
-    }).catch(() => {
-      showToast('복사에 실패했습니다');
-    });
-  }
-
-  // ===== COPY LINK =====
-  function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      showToast('링크가 복사되었습니다');
-    }).catch(() => {
-      showToast('복사에 실패했습니다');
-    });
-  }
-
-  // ===== KAKAO SHARE =====
-  function shareKakao() {
-    if (navigator.share) {
-      navigator.share({
-        title: '홍광비 ♥ 석지윤 결혼합니다',
-        text: '2026년 5월 16일 토요일 오후 2시\n서울 강남구 그랜드 웨딩홀',
-        url: window.location.href
+  <script>
+    // 스크롤 페이드인 효과
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
-    } else {
-      copyLink();
-    }
-  }
+    }, { threshold: 0.1 });
 
-  // ===== TOAST =====
-  function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
-  }
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ===== GUESTBOOK =====
-  let messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
-
-  function renderMessages() {
-    const container = document.getElementById('guestMessages');
-    const defaultMsg = container.querySelector('.guestbook-msg');
-    let html = defaultMsg ? defaultMsg.outerHTML : '';
-
-    messages.forEach(m => {
-      html += `
-        <div class="guestbook-msg">
-          <div class="guestbook-msg-name">${escapeHtml(m.name)}</div>
-          <div class="guestbook-msg-text">${escapeHtml(m.text)}</div>
-          <div class="guestbook-msg-date">${m.date}</div>
-        </div>
-      `;
-    });
-
-    container.innerHTML = html;
-  }
-
-  function addMessage() {
-    const name = document.getElementById('guestName').value.trim();
-    const text = document.getElementById('guestMessage').value.trim();
-
-    if (!name || !text) {
-      showToast('이름과 메시지를 입력해주세요');
-      return;
-    }
-
-    const now = new Date();
-    const date = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
-
-    messages.unshift({ name, text, date });
-    localStorage.setItem('wedding_messages', JSON.stringify(messages));
-
-    document.getElementById('guestName').value = '';
-    document.getElementById('guestMessage').value = '';
-
-    renderMessages();
-    showToast('축하 메시지가 등록되었습니다 💕');
-  }
-
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  renderMessages();
-</script>
+    // 콘솔 경고
+    console.log('%c⚠ 경고: 극도로 잘생긴 수배자 데이터에 접근 중...', 'color: red; font-size: 20px; font-weight: bold;');
+  </script>
 
 </body>
 </html>
