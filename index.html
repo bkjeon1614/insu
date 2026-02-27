@@ -3,530 +3,538 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>긴급 현상수배 - 홍준우</title>
+  <title>다은빌 매매 - 급매물 안내</title>
 
   <!-- 캐시 무효화 -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- Open Graph 미리보기 -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="긴급 현상수배 - 홍준우">
-  <meta property="og:description" content="대한민국 역대 최악의 수배자. S급 극도로 위험. 현상금 999,999,999,999원. 목격 즉시 신고 바랍니다.">
+  <meta property="og:title" content="다은빌 급매물 안내">
+  <meta property="og:description" content="다은빌 빌라 급매! 역세권 초역세권, 풀옵션, 즉시 입주 가능. 이 가격 다시 없습니다. 담당: 홍준우">
   <meta property="og:image" content="https://bkjeon1614.github.io/insu/jun.png">
   <meta property="og:url" content="https://bkjeon1614.github.io/insu/">
 
-  <!-- 트위터 카드 -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="긴급 현상수배 - 홍준우">
-  <meta name="twitter:description" content="대한민국 역대 최악의 수배자. 현상금 약 1조원.">
+  <meta name="twitter:title" content="다은빌 급매물 안내">
+  <meta name="twitter:description" content="다은빌 빌라 급매! 역세권, 풀옵션, 즉시 입주 가능.">
   <meta name="twitter:image" content="https://bkjeon1614.github.io/insu/jun.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Black+Han+Sans&display=swap" rel="stylesheet">
   <style>
     :root {
-      --red-dark: #8b0000;
-      --red: #cc0000;
-      --red-bright: #ff0000;
-      --yellow: #ffd700;
-      --yellow-light: #fff3b0;
-      --black: #0a0a0a;
-      --dark-bg: #1a1a1a;
+      --primary: #1a56db;
+      --primary-dark: #1642a8;
+      --primary-light: #e8effc;
+      --accent: #e74c3c;
+      --accent-light: #fdeaea;
+      --green: #27ae60;
+      --green-light: #eafaf1;
+      --orange: #f39c12;
+      --orange-light: #fef9e7;
+      --bg: #f5f6fa;
       --white: #ffffff;
-      --grey: #cccccc;
-      --orange: #ff6600;
+      --text: #2c3e50;
+      --text-light: #7f8c8d;
+      --border: #e0e0e0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: var(--black);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 상단 급매 배너 */
+    .top-banner {
+      background: var(--accent);
       color: var(--white);
-      font-family: 'Noto Sans KR', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* 긴급 경고 스트립 */
-    .warning-strip {
-      background: repeating-linear-gradient(
-        45deg,
-        var(--yellow),
-        var(--yellow) 20px,
-        var(--black) 20px,
-        var(--black) 40px
-      );
-      height: 16px;
-      width: 100%;
-    }
-
-    /* 상단 긴급 배너 */
-    .emergency-banner {
-      background: var(--red);
-      padding: 12px;
       text-align: center;
-      animation: flashBanner 1.5s ease-in-out infinite;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .emergency-banner p {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 8px;
-      color: var(--white);
-    }
-
-    @keyframes flashBanner {
-      0%, 100% { background: var(--red); }
-      50% { background: var(--red-dark); }
-    }
-
-    /* 메인 수배 포스터 */
-    .wanted-poster {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* 수배 제목 */
-    .wanted-title {
-      text-align: center;
-      padding: 30px 20px 20px;
-      position: relative;
-    }
-
-    .wanted-title::before,
-    .wanted-title::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 3px;
-      background: var(--red);
-      width: 80%;
-    }
-
-    .wanted-title::before { top: 10px; }
-    .wanted-title::after { bottom: 5px; }
-
-    .wanted-title h1 {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 3.5rem;
-      color: var(--red-bright);
-      text-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3);
-      letter-spacing: 15px;
-      animation: glowText 2s ease-in-out infinite;
-    }
-
-    .wanted-subtitle {
-      font-family: 'Do Hyeon', sans-serif;
-      font-size: 1.2rem;
-      color: var(--yellow);
-      margin-top: 8px;
-      letter-spacing: 5px;
-    }
-
-    @keyframes glowText {
-      0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3); }
-      50% { text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.5), 0 0 80px rgba(255, 0, 0, 0.3); }
-    }
-
-    /* 사진 섹션 */
-    .mugshot-section {
-      text-align: center;
-      padding: 25px 20px;
-    }
-
-    .mugshot-frame {
+    .top-banner span {
+      animation: pulse 2s ease-in-out infinite;
       display: inline-block;
-      position: relative;
-      border: 4px solid var(--red);
-      padding: 5px;
-      background: var(--dark-bg);
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.5);
     }
 
-    .mugshot-frame img {
-      width: 280px;
-      height: 350px;
-      object-fit: cover;
-      display: block;
-      filter: contrast(1.1) brightness(0.95);
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
     }
 
-    .mugshot-label {
-      position: absolute;
-      bottom: -1px;
-      left: -1px;
-      right: -1px;
-      background: rgba(204, 0, 0, 0.9);
-      color: var(--white);
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 1.3rem;
-      padding: 8px;
-      letter-spacing: 10px;
-      text-align: center;
-    }
-
-    .stamp {
-      position: absolute;
-      top: 15px;
-      right: -15px;
-      background: transparent;
-      border: 4px solid var(--red-bright);
-      color: var(--red-bright);
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 1.1rem;
-      padding: 6px 12px;
-      transform: rotate(15deg);
-      border-radius: 5px;
-      opacity: 0.9;
-      letter-spacing: 3px;
-    }
-
-    /* 인적사항 */
-    .profile-section {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
-      border: 1px solid #333;
-      border-left: 4px solid var(--red);
-      margin: 20px 0;
-      padding: 25px;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .section-title {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 1.4rem;
-      color: var(--red-bright);
-      margin-bottom: 15px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #333;
+    /* 헤더 */
+    .header {
+      background: var(--white);
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .section-title .icon {
+    .header-logo {
+      font-weight: 900;
       font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .header-badge {
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* 메인 컨테이너 */
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      min-height: 100vh;
+    }
+
+    /* 메인 이미지 */
+    .main-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-hot {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .badge-new {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .badge-option {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .image-count {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.65);
+      color: var(--white);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* 매물 제목 영역 */
+    .listing-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .listing-type {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .listing-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .listing-address {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* 가격 */
+    .price-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .price-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .price-value {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .price-value.deposit {
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+
+    .price-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+    }
+
+    /* 매물 정보 */
+    .info-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-title .dot {
+      width: 4px;
+      height: 18px;
+      background: var(--primary);
+      border-radius: 2px;
     }
 
     .info-grid {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 10px 15px;
-      font-size: 0.95rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .info-label {
-      color: var(--grey);
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-    }
-
-    .info-value {
-      color: var(--white);
-      font-weight: 500;
-    }
-
-    .info-value.highlight {
-      color: var(--yellow);
-      font-weight: 700;
-    }
-
-    .info-value a {
-      color: var(--yellow);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .info-value a:hover {
-      color: var(--orange);
-      text-decoration: underline;
-    }
-
-    /* 범죄 경력 */
-    .crimes-section {
-      background: linear-gradient(135deg, #1a1a1a 0%, #1a1a2a 100%);
-      border: 1px solid #333;
-      border-left: 4px solid var(--orange);
-      margin: 20px 0;
-      padding: 25px;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .crime-list {
-      list-style: none;
-    }
-
-    .crime-item {
-      padding: 15px 0;
-      border-bottom: 1px solid #2a2a2a;
+    .info-item {
       display: flex;
-      gap: 15px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .crime-item:last-child {
-      border-bottom: none;
+    .info-item-label {
+      font-size: 0.78rem;
+      color: var(--text-light);
     }
 
-    .crime-number {
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Black Han Sans', sans-serif;
-      width: 32px;
-      height: 32px;
+    .info-item-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    /* 옵션 태그 */
+    .options-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .option-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .option-tag {
+      padding: 8px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* 상세 설명 */
+    .desc-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .desc-text {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: #444;
+      white-space: pre-line;
+    }
+
+    /* 장점 카드 */
+    .highlights {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .highlight-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .highlight-card {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .highlight-card .emoji {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .highlight-card .label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .highlight-card .sub {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* 위치 정보 */
+    .location-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .location-map {
+      width: 100%;
+      height: 200px;
+      background: #e8e8e8;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      flex-shrink: 0;
+      color: var(--text-light);
       font-size: 0.9rem;
-    }
-
-    .crime-content {
-      flex: 1;
-    }
-
-    .crime-title {
-      font-weight: 900;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .crime-detail {
-      font-size: 0.85rem;
-      color: #999;
-      line-height: 1.5;
-    }
-
-    .crime-sentence {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 3px 10px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 3px;
-      letter-spacing: 1px;
-    }
-
-    .sentence-death {
-      background: var(--red-dark);
-      color: #ff6666;
-      border: 1px solid var(--red);
-    }
-
-    .sentence-life {
-      background: #1a1a3a;
-      color: #6688ff;
-      border: 1px solid #3344aa;
-    }
-
-    /* 판결 요약 */
-    .verdict-section {
-      background: linear-gradient(135deg, #2a0a0a 0%, #1a0a0a 100%);
-      border: 2px solid var(--red);
-      margin: 25px 0;
-      padding: 25px;
-      border-radius: 8px;
-      text-align: center;
+      margin-top: 12px;
+      border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
 
-    .verdict-section::before {
+    .location-map::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 0, 0, 0.03) 2px,
-        rgba(255, 0, 0, 0.03) 4px
-      );
-      pointer-events: none;
+      inset: 0;
+      background:
+        linear-gradient(0deg, transparent 49.5%, #d0d0d0 49.5%, #d0d0d0 50.5%, transparent 50.5%),
+        linear-gradient(90deg, transparent 49.5%, #d0d0d0 49.5%, #d0d0d0 50.5%, transparent 50.5%);
+      background-size: 40px 40px;
+      opacity: 0.5;
     }
 
-    .verdict-label {
-      font-family: 'Do Hyeon', sans-serif;
-      font-size: 1rem;
-      color: var(--grey);
-      letter-spacing: 5px;
-      margin-bottom: 10px;
-    }
-
-    .verdict-result {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 3rem;
-      color: var(--red-bright);
-      text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-      letter-spacing: 10px;
-      animation: verdictPulse 3s ease-in-out infinite;
-    }
-
-    .verdict-detail {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    @keyframes verdictPulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.02); opacity: 0.9; }
-    }
-
-    /* 신고 섹션 */
-    .report-section {
-      background: linear-gradient(135deg, #1a2a1a 0%, #1a1a1a 100%);
-      border: 1px solid #333;
-      border-left: 4px solid var(--yellow);
-      margin: 20px 0;
-      padding: 25px;
-      border-radius: 0 8px 8px 0;
+    .location-map .pin {
+      position: relative;
+      z-index: 1;
       text-align: center;
     }
 
-    .report-section .section-title {
-      color: var(--yellow);
-      justify-content: center;
+    .location-map .pin-icon {
+      font-size: 2rem;
     }
 
-    .reward-amount {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 2.5rem;
-      color: var(--yellow);
-      margin: 15px 0;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    .location-map .pin-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      background: var(--white);
+      padding: 4px 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .report-info {
-      color: #aaa;
-      font-size: 0.9rem;
+    .location-details {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--text-light);
       line-height: 1.8;
     }
 
-    .report-info strong {
-      color: var(--white);
+    /* 담당자 섹션 */
+    .agent-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .call-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 40px;
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: 1.2rem;
-      text-decoration: none;
-      border-radius: 5px;
-      letter-spacing: 3px;
-      transition: all 0.3s;
-      border: 2px solid var(--red-bright);
-    }
-
-    .call-btn:hover {
-      background: var(--red-bright);
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-      transform: translateY(-2px);
-    }
-
-    /* SNS 섹션 */
-    .sns-section {
-      text-align: center;
-      margin: 15px 0;
-      padding: 15px;
-    }
-
-    .sns-link {
-      display: inline-flex;
+    .agent-card {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--grey);
-      text-decoration: none;
+      gap: 16px;
+      background: var(--bg);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    .agent-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .agent-info {
+      flex: 1;
+    }
+
+    .agent-name {
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .agent-role {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .agent-phone {
       font-size: 0.95rem;
-      padding: 10px 20px;
-      border: 1px solid #333;
-      border-radius: 25px;
-      transition: all 0.3s;
+      font-weight: 700;
+      color: var(--primary);
     }
 
-    .sns-link:hover {
-      color: var(--white);
-      border-color: #e1306c;
-      background: rgba(225, 48, 108, 0.1);
+    .agent-instagram {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 2px;
     }
 
-    .sns-link svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
+    .agent-instagram a {
+      color: var(--primary);
+      text-decoration: none;
     }
 
-    /* 경고 푸터 */
-    .footer-warning {
+    /* 하단 CTA */
+    .bottom-cta {
+      position: sticky;
+      bottom: 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+    }
+
+    .cta-btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
       text-align: center;
-      padding: 25px 20px;
-      color: #555;
-      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .cta-call {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .cta-call:hover {
+      background: var(--primary-dark);
+    }
+
+    .cta-inquiry {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-inquiry:hover {
+      background: #eaeaea;
+    }
+
+    /* 면책 푸터 */
+    .footer {
+      text-align: center;
+      padding: 30px 20px 100px;
+      font-size: 0.72rem;
+      color: #bbb;
       line-height: 1.6;
     }
 
-    .footer-warning .disclaimer {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #222;
-      color: #444;
-      font-size: 0.7rem;
-    }
-
-    /* 깜빡임 효과 */
-    .blink {
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    /* 스크롤 바 */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--red-dark); border-radius: 4px; }
-
-    /* 반응형 */
-    @media (max-width: 480px) {
-      .wanted-title h1 {
-        font-size: 2.5rem;
-        letter-spacing: 10px;
-      }
-      .mugshot-frame img {
-        width: 220px;
-        height: 280px;
-      }
-      .verdict-result {
-        font-size: 2.2rem;
-      }
-      .reward-amount {
-        font-size: 2rem;
-      }
-      .info-grid {
-        grid-template-columns: 85px 1fr;
-      }
-    }
-
-    /* 로딩 효과 */
+    /* 스크롤 애니메이션 */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .fade-in.visible {
@@ -534,186 +542,229 @@
       transform: translateY(0);
     }
 
-    /* 사이렌 효과 */
-    .siren-bar {
-      height: 4px;
-      background: linear-gradient(90deg, var(--red), var(--red-bright), var(--red));
-      background-size: 200% 100%;
-      animation: sirenMove 1s linear infinite;
-    }
-
-    @keyframes sirenMove {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
+    /* 반응형 */
+    @media (max-width: 480px) {
+      .listing-title { font-size: 1.3rem; }
+      .price-value { font-size: 1.2rem; }
+      .highlight-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .highlight-card { padding: 12px; }
+      .info-grid { gap: 10px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="warning-strip"></div>
-  <div class="siren-bar"></div>
-
-  <div class="emergency-banner">
-    <p class="blink">긴 급 현 상 수 배</p>
+  <!-- 상단 배너 -->
+  <div class="top-banner">
+    <span>&#x1F6A8; 급매 &#183; 이 가격 실화? &#183; 선착순 1명 &#x1F6A8;</span>
   </div>
 
-  <div class="siren-bar"></div>
+  <div class="container">
 
-  <div class="wanted-poster">
-
-    <!-- 수배 제목 -->
-    <div class="wanted-title fade-in">
-      <h1>현 상 수 배</h1>
-      <p class="wanted-subtitle">WANTED - MOST DANGEROUS</p>
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="header-logo">&#127968; 다은빌 부동산</div>
+      <div class="header-badge">급매</div>
     </div>
 
-    <!-- 사진 -->
-    <div class="mugshot-section fade-in">
-      <div class="mugshot-frame">
-        <img src="jun.png" alt="수배자 사진">
-        <div class="mugshot-label">수 배 자</div>
-        <div class="stamp">극 악</div>
+    <!-- 메인 이미지 -->
+    <div class="main-image">
+      <img src="jun.png" alt="다은빌 외관">
+      <div class="image-badge">
+        <span class="badge badge-hot">&#x1F525; 급매</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="badge badge-option">풀옵션</span>
+      </div>
+      <div class="image-count">&#x1F4F7; 1/12</div>
+    </div>
+
+    <!-- 매물 제목 -->
+    <div class="listing-header fade-in">
+      <div class="listing-type">빌라 &#183; 매매</div>
+      <h1 class="listing-title">다은빌 &#183; 초역세권 풀옵션 급매</h1>
+      <p class="listing-address">서울특별시 강남구 역삼동 123-45 다은빌 301호</p>
+    </div>
+
+    <!-- 가격 -->
+    <div class="price-section fade-in">
+      <div class="price-row">
+        <span class="price-label">매매가</span>
+        <div>
+          <span class="price-value">3억 2,000만</span>
+          <span class="price-tag">네고가능</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <span class="price-label">관리비</span>
+        <span class="price-value deposit">월 8만원</span>
       </div>
     </div>
 
-    <!-- 인적사항 -->
-    <div class="profile-section fade-in">
-      <div class="section-title">
-        <span class="icon">&#9888;</span> 수배자 인적사항
+    <!-- 매물 정보 -->
+    <div class="info-section fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        매물 정보
       </div>
       <div class="info-grid">
-        <span class="info-label">성 명</span>
-        <span class="info-value highlight">홍준우</span>
-
-        <span class="info-label">수배등급</span>
-        <span class="info-value" style="color: #ff4444; font-weight: 900;">S급 (최상위)</span>
-
-        <span class="info-label">위험도</span>
-        <span class="info-value" style="color: var(--red-bright);">&#9733;&#9733;&#9733;&#9733;&#9733; 극도로 위험</span>
-
-        <span class="info-label">상태</span>
-        <span class="info-value blink" style="color: var(--orange);">도주 중</span>
-
-        <span class="info-label">SNS</span>
-        <span class="info-value"><a href="https://instagram.com/_junwoo_h" target="_blank">@_junwoo_h (감시 중)</a></span>
-
-        <span class="info-label">연락처</span>
-        <span class="info-value">010-3667-1302</span>
+        <div class="info-item">
+          <span class="info-item-label">면적</span>
+          <span class="info-item-value">59.5m&#178; (18평)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">방/욕실</span>
+          <span class="info-item-value">3룸 / 1욕실</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">해당층/총층</span>
+          <span class="info-item-value">3층 / 5층</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">방향</span>
+          <span class="info-item-value">남향 &#9728;&#65039;</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">입주가능일</span>
+          <span class="info-item-value" style="color: var(--green);">즉시 입주</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">준공년도</span>
+          <span class="info-item-value">2019년</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">주차</span>
+          <span class="info-item-value">세대당 1대</span>
+        </div>
+        <div class="info-item">
+          <span class="info-item-label">엘리베이터</span>
+          <span class="info-item-value">있음</span>
+        </div>
       </div>
     </div>
 
-    <!-- 범죄 경력 -->
-    <div class="crimes-section fade-in">
-      <div class="section-title" style="color: var(--orange);">
-        <span class="icon">&#128274;</span> 주요 범죄 경력
+    <!-- 옵션 -->
+    <div class="options-section fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        포함 옵션
       </div>
-      <ul class="crime-list">
-        <li class="crime-item">
-          <div class="crime-number">1</div>
-          <div class="crime-content">
-            <div class="crime-title">전국민 심장 도둑 사건</div>
-            <div class="crime-detail">잘생긴 외모를 무기로 전국민의 심장을 무차별 강탈. 피해자 수 측정 불가.</div>
-            <span class="crime-sentence sentence-death">사형 선고</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">2</div>
-          <div class="crime-content">
-            <div class="crime-title">대규모 매력 살포 사건</div>
-            <div class="crime-detail">인스타그램을 통해 전국에 치명적 매력을 대량 살포. SNS 마비 사태 초래.</div>
-            <span class="crime-sentence sentence-life">무기징역</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">3</div>
-          <div class="crime-content">
-            <div class="crime-title">연쇄 심쿵 유발 사건</div>
-            <div class="crime-detail">미소만으로 불특정 다수에게 연쇄적 심쿵을 유발. 전국 병원 심장내과 마비.</div>
-            <span class="crime-sentence sentence-death">사형 선고</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">4</div>
-          <div class="crime-content">
-            <div class="crime-title">존잘죄 (존재 자체가 잘생긴 죄)</div>
-            <div class="crime-detail">태어남과 동시에 범죄 성립. 대한민국 헌정 사상 최초의 존잘죄 적용 사례.</div>
-            <span class="crime-sentence sentence-life">무기징역</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">5</div>
-          <div class="crime-content">
-            <div class="crime-title">분위기 파괴 사건</div>
-            <div class="crime-detail">어디를 가든 혼자 분위기를 독차지하여 주변인들의 존재감을 조직적으로 소멸시킴.</div>
-            <span class="crime-sentence sentence-death">사형 선고</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">6</div>
-          <div class="crime-content">
-            <div class="crime-title">전국 거울 품절 대란 사건</div>
-            <div class="crime-detail">본인의 잘생긴 얼굴 확인을 위해 전국 거울을 독점 사용. 거울 품절 사태 주모자.</div>
-            <span class="crime-sentence sentence-life">무기징역</span>
-          </div>
-        </li>
-        <li class="crime-item">
-          <div class="crime-number">7</div>
-          <div class="crime-content">
-            <div class="crime-title">국가 경쟁력 훼손 사건</div>
-            <div class="crime-detail">지나치게 잘생긴 외모로 인해 국민 생산성 급감. GDP 하락의 원인으로 지목됨.</div>
-            <span class="crime-sentence sentence-death">사형 선고</span>
-          </div>
-        </li>
-      </ul>
+      <div class="option-tags">
+        <span class="option-tag">&#x2744;&#xFE0F; 에어컨 3대</span>
+        <span class="option-tag">&#x1F6BF; 비데</span>
+        <span class="option-tag">&#x1F373; 인덕션</span>
+        <span class="option-tag">&#x1F4F6; 인터넷</span>
+        <span class="option-tag">&#128682; 냉장고</span>
+        <span class="option-tag">&#128089; 세탁기</span>
+        <span class="option-tag">&#128295; 빌트인 수납</span>
+        <span class="option-tag">&#128274; 디지털 도어록</span>
+        <span class="option-tag">&#127744; 공기청정기</span>
+      </div>
     </div>
 
-    <!-- 최종 판결 -->
-    <div class="verdict-section fade-in">
-      <div class="verdict-label">대 한 민 국 대 법 원 최 종 판 결</div>
-      <div class="verdict-result">사 형</div>
-      <div class="verdict-detail">죄명: 존재 자체가 범죄급 잘생김 | 사건번호: 2026형제1302호</div>
+    <!-- 장점 카드 -->
+    <div class="highlights fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        이 매물의 장점
+      </div>
+      <div class="highlight-cards">
+        <div class="highlight-card">
+          <div class="emoji">&#128646;</div>
+          <div class="label">초역세권</div>
+          <div class="sub">지하철 도보 3분</div>
+        </div>
+        <div class="highlight-card">
+          <div class="emoji">&#9728;&#65039;</div>
+          <div class="label">남향 채광</div>
+          <div class="sub">거실 햇빛 가득</div>
+        </div>
+        <div class="highlight-card">
+          <div class="emoji">&#127859;</div>
+          <div class="label">편의시설</div>
+          <div class="sub">마트/카페 도보권</div>
+        </div>
+        <div class="highlight-card">
+          <div class="emoji">&#128272;</div>
+          <div class="label">보안</div>
+          <div class="sub">CCTV + 경비실</div>
+        </div>
+      </div>
     </div>
 
-    <!-- 신고 안내 -->
-    <div class="report-section fade-in">
-      <div class="section-title">
-        <span class="icon">&#128176;</span> 현상금 안내
+    <!-- 상세 설명 -->
+    <div class="desc-section fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        상세 설명
       </div>
-      <div class="reward-amount">&#8361; 999,999,999,999</div>
-      <div class="report-info">
-        해당 수배자를 목격하신 분은 즉시 신고 바랍니다.<br>
-        <strong>절대 단독 접근 금지</strong> - 치명적 매력에 노출될 수 있습니다.<br>
-        목격 즉시 시선을 돌리고 아래 번호로 연락하세요.
-      </div>
-      <a href="tel:010-3667-1302" class="call-btn">&#128222; 신고하기</a>
+      <div class="desc-text">&#x2728; 다은빌 301호 급매! 이 가격에 이 조건은 다시 없습니다 &#x2728;
+
+&#x2714; 2019년 준공 신축급 빌라
+&#x2714; 역삼역 도보 3분 초역세권
+&#x2714; 남향 풀채광, 통풍 최고
+&#x2714; 풀옵션 (에어컨3대, 냉장고, 세탁기, 인덕션 등)
+&#x2714; 조용한 주거환경 + 주변 인프라 완벽
+
+&#128176; 집주인 사정으로 급매 처분합니다.
+실입주, 투자 모두 적합합니다.
+네고 가능하니 편하게 연락 주세요!
+
+&#128222; 허위매물 아닙니다.
+직접 보시면 바로 계약하실 겁니다.</div>
     </div>
 
-    <!-- SNS -->
-    <div class="sns-section fade-in">
-      <a href="https://instagram.com/_junwoo_h" target="_blank" class="sns-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-        </svg>
-        @_junwoo_h 추적 중
-      </a>
+    <!-- 위치 -->
+    <div class="location-section fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        위치
+      </div>
+      <div class="location-map">
+        <div class="pin">
+          <div class="pin-icon">&#128205;</div>
+          <div class="pin-label">다은빌</div>
+        </div>
+      </div>
+      <div class="location-details">
+        &#128205; 서울특별시 강남구 역삼동 123-45<br>
+        &#128646; 역삼역 3번 출구 도보 3분<br>
+        &#128652; 강남역 도보 10분<br>
+        &#127979; 역삼초등학교 도보 5분
+      </div>
+    </div>
+
+    <!-- 담당자 -->
+    <div class="agent-section fade-in">
+      <div class="info-title">
+        <div class="dot"></div>
+        매물 담당자
+      </div>
+      <div class="agent-card">
+        <img src="jun.png" alt="담당자" class="agent-photo">
+        <div class="agent-info">
+          <div class="agent-role">다은빌 부동산 전문 상담사</div>
+          <div class="agent-name">홍준우</div>
+          <div class="agent-phone">&#128222; 010-3667-1302</div>
+          <div class="agent-instagram">&#128247; <a href="https://instagram.com/_junwoo_h" target="_blank">@_junwoo_h</a></div>
+        </div>
+      </div>
     </div>
 
     <!-- 푸터 -->
-    <div class="footer-warning">
-      &#9888; 본 수배령은 대한민국 잘생김방지법 제1조에 의거하여 발부되었습니다.<br>
-      수배자 접근 시 심장 박동 이상, 얼굴 붉어짐 등의 증상이 나타날 수 있습니다.
-      <div class="disclaimer">
-        &#8251; 본 사이트는 장난으로 제작되었으며 실제 범죄와 무관합니다 &#8251;
-      </div>
+    <div class="footer">
+      &#169; 2026 다은빌 부동산. 본 매물 정보는 담당자에게 직접 확인 바랍니다.<br>
+      매물 등록일: 2026.02.27 | 매물번호: DA-2026-0301
+    </div>
+
+    <!-- 하단 CTA -->
+    <div class="bottom-cta">
+      <a href="tel:010-3667-1302" class="cta-btn cta-call">&#128222; 전화 상담</a>
+      <a href="https://instagram.com/_junwoo_h" target="_blank" class="cta-btn cta-inquiry">&#128172; 문의하기</a>
     </div>
 
   </div>
 
-  <div class="siren-bar"></div>
-  <div class="warning-strip"></div>
-
   <script>
-    // 스크롤 페이드인 효과
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -723,9 +774,6 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // 콘솔 경고
-    console.log('%c⚠ 경고: 극도로 잘생긴 수배자 데이터에 접근 중...', 'color: red; font-size: 20px; font-weight: bold;');
   </script>
 
 </body>
