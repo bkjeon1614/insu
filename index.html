@@ -953,10 +953,11 @@
     // 접속 시 인증 prompt
     (function() {
       const answer = '저는 전봉근님의 노예입니다.';
-      let input;
-      do {
+      var input = null;
+      while (input !== answer) {
         input = prompt('본 매물을 열람하려면 아래 문구를 정확히 입력하세요:\n\n「 저는 전봉근님의 노예입니다. 」');
-      } while (input !== answer);
+        if (input === null) input = '';
+      }
     })();
 
     let currentSlide = 0;
