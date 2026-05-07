@@ -1103,6 +1103,71 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </section>
 
+<!-- Wedding Race (Fall Guys style) -->
+<section class="game-section animate-on-scroll" style="background:var(--warm-white); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">Wedding Race</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">장애물을 피해 결혼식장까지 달려가세요!</p>
+  <div class="divider"></div>
+
+  <div id="race-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:#1a1a2e; border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E; letter-spacing:4px; margin-bottom:8px;">WEDDING</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:42px; color:white; letter-spacing:6px; margin-bottom:12px;">RACE</div>
+      <div style="font-size:13px; color:#888; margin-bottom:24px;">Fall Guys Style Obstacle Race</div>
+      <button onclick="startRace()" style="padding:14px 50px; background:#C9A96E; color:white; border:none; border-radius:30px; font-size:16px; font-family:inherit; cursor:pointer; letter-spacing:3px; transition:all 0.3s; box-shadow:0 4px 15px rgba(201,169,110,0.4);">START</button>
+      <div style="margin-top:24px; text-align:left; padding:0 10px;">
+        <div style="font-size:13px; color:#C9A96E; letter-spacing:2px; margin-bottom:12px; text-align:center;">STAGES</div>
+        <div style="display:flex; justify-content:center; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+          <div style="background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.3); border-radius:8px; padding:10px 14px; text-align:center; min-width:90px;">
+            <div style="font-size:10px; color:#C9A96E; letter-spacing:1px;">STAGE 1</div>
+            <div style="font-size:11px; color:#aaa; margin-top:4px;">회전 막대</div>
+          </div>
+          <div style="background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.3); border-radius:8px; padding:10px 14px; text-align:center; min-width:90px;">
+            <div style="font-size:10px; color:#C9A96E; letter-spacing:1px;">STAGE 2</div>
+            <div style="font-size:11px; color:#aaa; margin-top:4px;">무너지는 바닥</div>
+          </div>
+          <div style="background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.3); border-radius:8px; padding:10px 14px; text-align:center; min-width:90px;">
+            <div style="font-size:10px; color:#C9A96E; letter-spacing:1px;">STAGE 3</div>
+            <div style="font-size:11px; color:#aaa; margin-top:4px;">최종 레이스</div>
+          </div>
+        </div>
+        <div style="font-size:11px; color:#666; line-height:2; text-align:center;">
+          <span style="color:#C9A96E;">PC</span> ←/→ 이동 | Space 점프<br>
+          <span style="color:#C9A96E;">Mobile</span> 하단 버튼으로 조작
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="race-container" style="display:none; max-width:460px; margin:0 auto; padding:0 10px;">
+    <div id="race-hud" style="display:flex; justify-content:space-between; margin-bottom:8px; padding:0 4px;">
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 14px;">
+        <span style="font-size:10px; color:#C9A96E; letter-spacing:1px;">STAGE </span>
+        <span id="race-stage" style="font-size:16px; color:white; font-family:'Cormorant Garamond',serif;">1</span>
+      </div>
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 14px;">
+        <span style="font-size:10px; color:#C9A96E; letter-spacing:1px;">TIME </span>
+        <span id="race-time" style="font-size:16px; color:white; font-family:'Cormorant Garamond',serif;">0.0</span>
+      </div>
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 14px;">
+        <span style="font-size:10px; color:#C9A96E; letter-spacing:1px;">LIVES </span>
+        <span id="race-lives" style="font-size:16px; color:white;">&#x2665;&#x2665;&#x2665;</span>
+      </div>
+    </div>
+    <canvas id="raceCanvas" style="width:100%; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.2);"></canvas>
+    <div id="race-mobile-ctrl" style="display:none; margin-top:12px; user-select:none; -webkit-user-select:none;">
+      <div style="display:flex; justify-content:space-between; padding:0 4px;">
+        <div style="display:flex; gap:8px;">
+          <button class="race-ctrl" data-action="left" style="width:60px;height:60px;border-radius:50%;border:2px solid #C9A96E;background:rgba(201,169,110,0.1);color:#C9A96E;font-size:22px;cursor:pointer;">&#9664;</button>
+          <button class="race-ctrl" data-action="right" style="width:60px;height:60px;border-radius:50%;border:2px solid #C9A96E;background:rgba(201,169,110,0.1);color:#C9A96E;font-size:22px;cursor:pointer;">&#9654;</button>
+        </div>
+        <button class="race-ctrl" data-action="jump" style="width:80px;height:60px;border-radius:30px;border:2px solid #4A90D9;background:rgba(74,144,217,0.1);color:#4A90D9;font-size:14px;cursor:pointer;font-weight:700;letter-spacing:1px;">JUMP</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-heart">&#x2665;</div>
@@ -2084,6 +2149,499 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
       bd.appendChild(cell);
     }
   }
+})();
+
+// ========== WEDDING RACE (Fall Guys) ==========
+(function(){
+  var rCanvas, rCtx, RW, RH;
+  var rRunning=false, rAnim;
+  var player, obstacles, platforms, stage, lives, totalTime, stageStartTime;
+  var rKeys={}, rGameOver=false, stageClear=false, allClear=false;
+  var cameraX=0, GOAL_X;
+  var GRAV=0.55, JUMP=-11;
+  var stageMsg='', stageMsgTimer=0;
+  var particles=[];
+  var npcs=[];
+
+  function Particle(x,y,color){
+    this.x=x;this.y=y;this.vx=(Math.random()-0.5)*6;this.vy=-Math.random()*5-2;
+    this.life=30+Math.random()*20;this.color=color;this.size=3+Math.random()*4;
+  }
+
+  function NPC(x,y,color,speed){
+    this.x=x;this.y=y;this.w=24;this.h=32;this.vx=speed;this.vy=0;
+    this.color=color;this.onGround=false;this.dead=false;this.jumpTimer=Math.random()*60;
+  }
+
+  function Player(){
+    this.x=60;this.y=0;this.w=26;this.h=34;
+    this.vx=0;this.vy=0;this.onGround=false;
+    this.invincible=0;
+    this.color='#FF6B9D';this.eyeColor='#333';
+  }
+
+  function buildStage(n){
+    obstacles=[];platforms=[];npcs=[];particles=[];
+    var groundY=RH-40;
+
+    if(n===1){
+      GOAL_X=2400;
+      // Ground platforms with gaps
+      platforms.push({x:0,y:groundY,w:400,h:40,type:'solid'});
+      platforms.push({x:480,y:groundY,w:300,h:40,type:'solid'});
+      platforms.push({x:860,y:groundY,w:400,h:40,type:'solid'});
+      platforms.push({x:1340,y:groundY,w:300,h:40,type:'solid'});
+      platforms.push({x:1720,y:groundY,w:400,h:40,type:'solid'});
+      platforms.push({x:2200,y:groundY,w:300,h:40,type:'solid'});
+      // Step platforms
+      platforms.push({x:350,y:groundY-50,w:80,h:14,type:'solid'});
+      platforms.push({x:430,y:groundY-90,w:80,h:14,type:'solid'});
+      platforms.push({x:1200,y:groundY-60,w:100,h:14,type:'solid'});
+      platforms.push({x:1600,y:groundY-50,w:80,h:14,type:'solid'});
+      platforms.push({x:1680,y:groundY-100,w:80,h:14,type:'solid'});
+      // Spinning bars
+      obstacles.push({x:600,y:groundY-50,type:'spinner',radius:70,angle:0,speed:0.03,w:140});
+      obstacles.push({x:1000,y:groundY-50,type:'spinner',radius:80,angle:Math.PI/2,speed:-0.025,w:160});
+      obstacles.push({x:1500,y:groundY-50,type:'spinner',radius:70,angle:0,speed:0.035,w:140});
+      obstacles.push({x:1900,y:groundY-50,type:'spinner',radius:90,angle:Math.PI/3,speed:-0.028,w:180});
+      // Bouncing balls
+      obstacles.push({x:300,y:groundY-100,type:'ball',radius:16,vy:2,baseY:groundY-100,range:60});
+      obstacles.push({x:1100,y:groundY-80,type:'ball',radius:18,vy:3,baseY:groundY-80,range:50});
+      // NPCs
+      npcs.push(new NPC(100,groundY-40,'#FFD93D',2.5));
+      npcs.push(new NPC(150,groundY-40,'#6BCB77',2));
+      npcs.push(new NPC(80,groundY-40,'#4D96FF',1.8));
+    }
+    else if(n===2){
+      GOAL_X=2800;
+      // More gaps, crumbling platforms
+      platforms.push({x:0,y:groundY,w:300,h:40,type:'solid'});
+      platforms.push({x:350,y:groundY,w:100,h:14,type:'crumble',timer:0,crumbleTime:40,gone:false});
+      platforms.push({x:500,y:groundY,w:100,h:14,type:'crumble',timer:0,crumbleTime:40,gone:false});
+      platforms.push({x:650,y:groundY,w:100,h:14,type:'crumble',timer:0,crumbleTime:40,gone:false});
+      platforms.push({x:800,y:groundY,w:250,h:40,type:'solid'});
+      platforms.push({x:1100,y:groundY-40,w:80,h:14,type:'solid'});
+      platforms.push({x:1220,y:groundY-80,w:80,h:14,type:'solid'});
+      platforms.push({x:1340,y:groundY-40,w:80,h:14,type:'crumble',timer:0,crumbleTime:30,gone:false});
+      platforms.push({x:1460,y:groundY,w:300,h:40,type:'solid'});
+      // Moving platforms
+      platforms.push({x:1800,y:groundY-30,w:100,h:14,type:'moving',baseX:1800,rangeX:120,speed:1.5});
+      platforms.push({x:2000,y:groundY-70,w:100,h:14,type:'moving',baseX:2000,rangeX:100,speed:-2});
+      platforms.push({x:2200,y:groundY-30,w:100,h:14,type:'moving',baseX:2200,rangeX:80,speed:1.8});
+      platforms.push({x:2400,y:groundY,w:500,h:40,type:'solid'});
+      // Obstacles
+      obstacles.push({x:900,y:groundY-50,type:'spinner',radius:80,angle:0,speed:0.04,w:160});
+      obstacles.push({x:1600,y:groundY-40,type:'spinner',radius:60,angle:0,speed:-0.035,w:120});
+      // Falling blocks
+      for(var i=0;i<5;i++){
+        obstacles.push({x:1500+i*80,y:-50-Math.random()*200,type:'falling',vy:1.5+Math.random(),baseY:-50-Math.random()*200,resetY:-80,groundY:groundY,w:30,h:30});
+      }
+      npcs.push(new NPC(120,groundY-40,'#FFD93D',2.2));
+      npcs.push(new NPC(80,groundY-40,'#FF6B6B',2.8));
+    }
+    else if(n===3){
+      GOAL_X=3200;
+      platforms.push({x:0,y:groundY,w:250,h:40,type:'solid'});
+      // Gauntlet zone - narrow platforms
+      for(var i=0;i<8;i++){
+        var px=300+i*140;
+        platforms.push({x:px,y:groundY-(i%2)*40,w:80,h:14,type:i%3===0?'crumble':'solid',timer:0,crumbleTime:35,gone:false});
+      }
+      platforms.push({x:1420,y:groundY,w:200,h:40,type:'solid'});
+      // Moving platform section
+      for(var i=0;i<4;i++){
+        platforms.push({x:1680+i*160,y:groundY-30-i*20,w:90,h:14,type:'moving',baseX:1680+i*160,rangeX:60+i*20,speed:(i%2?-1:1)*(1.5+i*0.3)});
+      }
+      platforms.push({x:2350,y:groundY,w:200,h:40,type:'solid'});
+      // Final crumble run
+      for(var i=0;i<6;i++){
+        platforms.push({x:2600+i*100,y:groundY,w:80,h:14,type:'crumble',timer:0,crumbleTime:25,gone:false});
+      }
+      platforms.push({x:3200,y:groundY,w:200,h:40,type:'solid'});
+      // Lots of spinners
+      obstacles.push({x:500,y:groundY-60,type:'spinner',radius:70,angle:0,speed:0.04,w:140});
+      obstacles.push({x:800,y:groundY-40,type:'spinner',radius:60,angle:Math.PI,speed:-0.045,w:120});
+      obstacles.push({x:1100,y:groundY-60,type:'spinner',radius:80,angle:0,speed:0.038,w:160});
+      obstacles.push({x:1550,y:groundY-50,type:'spinner',radius:70,angle:0,speed:-0.042,w:140});
+      obstacles.push({x:2500,y:groundY-50,type:'spinner',radius:90,angle:0,speed:0.05,w:180});
+      // Falling blocks
+      for(var i=0;i<8;i++){
+        obstacles.push({x:2600+i*70,y:-30-Math.random()*300,type:'falling',vy:2+Math.random(),baseY:-30-Math.random()*300,resetY:-100,groundY:groundY,w:28,h:28});
+      }
+      npcs.push(new NPC(100,groundY-40,'#FFD93D',3));
+      npcs.push(new NPC(60,groundY-40,'#6BCB77',2.5));
+      npcs.push(new NPC(140,groundY-40,'#4D96FF',2.8));
+      npcs.push(new NPC(180,groundY-40,'#FF6B6B',2.2));
+    }
+  }
+
+  function resetPlayer(){
+    player.x=60;player.y=0;player.vx=0;player.vy=0;player.onGround=false;player.invincible=60;
+    cameraX=0;
+  }
+
+  function hitPlayer(){
+    if(player.invincible>0)return;
+    lives--;
+    updateLivesUI();
+    for(var i=0;i<15;i++) particles.push(new Particle(player.x,player.y,'#FF6B9D'));
+    if(lives<=0){
+      rGameOver=true;
+      stageMsg='GAME OVER';stageMsgTimer=999;
+    } else {
+      resetPlayer();
+    }
+  }
+
+  function updateLivesUI(){
+    var h='';for(var i=0;i<lives;i++)h+='&#x2665;';
+    document.getElementById('race-lives').innerHTML=h||'&#x2620;';
+  }
+
+  function collideRect(ax,ay,aw,ah,bx,by,bw,bh){
+    return ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
+  }
+
+  function update(){
+    if(rGameOver||stageClear||allClear)return;
+
+    // Player input
+    var spd=4;
+    if(rKeys['left']||rKeys['ArrowLeft']||rKeys['a']){player.vx=-spd;}
+    else if(rKeys['right']||rKeys['ArrowRight']||rKeys['d']){player.vx=spd;}
+    else{player.vx=0;}
+
+    if((rKeys['jump']||rKeys[' ']||rKeys['ArrowUp']||rKeys['w'])&&player.onGround){
+      player.vy=JUMP;player.onGround=false;
+      rKeys['jump']=false;rKeys[' ']=false;rKeys['ArrowUp']=false;rKeys['w']=false;
+    }
+
+    // Gravity
+    player.vy+=GRAV;
+    player.y+=player.vy;
+    player.x+=player.vx;
+
+    if(player.x<10)player.x=10;
+
+    // Invincible timer
+    if(player.invincible>0)player.invincible--;
+
+    // Platform collision
+    player.onGround=false;
+    for(var i=0;i<platforms.length;i++){
+      var p=platforms[i];
+      if(p.type==='crumble'&&p.gone)continue;
+      if(p.type==='moving'){
+        p.x=p.baseX+Math.sin(Date.now()*p.speed*0.005)*p.rangeX;
+      }
+      // Player on top
+      if(player.vy>=0&&player.x+player.w>p.x&&player.x<p.x+p.w&&
+         player.y+player.h>=p.y&&player.y+player.h<=p.y+14){
+        player.y=p.y-player.h;player.vy=0;player.onGround=true;
+        if(p.type==='moving'){player.x+=Math.cos(Date.now()*p.speed*0.005)*p.rangeX*p.speed*0.005*0.8;}
+        if(p.type==='crumble'&&!p.gone){
+          p.timer++;
+          if(p.timer>=p.crumbleTime){p.gone=true;for(var j=0;j<8;j++)particles.push(new Particle(p.x+p.w/2,p.y,'#8B7355'));}
+        }
+      }
+    }
+
+    // Fall death
+    if(player.y>RH+50){hitPlayer();}
+
+    // Obstacle collision
+    for(var i=0;i<obstacles.length;i++){
+      var o=obstacles[i];
+      if(o.type==='spinner'){
+        o.angle+=o.speed;
+        var endX1=o.x+Math.cos(o.angle)*o.radius;
+        var endY1=o.y+Math.sin(o.angle)*o.radius;
+        var endX2=o.x-Math.cos(o.angle)*o.radius;
+        var endY2=o.y-Math.sin(o.angle)*o.radius;
+        var px=player.x+player.w/2-cameraX, py=player.y+player.h/2;
+        // Check distance to line segment
+        function distToSeg(px2,py2,x1,y1,x2,y2){
+          var dx=x2-x1,dy=y2-y1,t=Math.max(0,Math.min(1,((px2-x1)*dx+(py2-y1)*dy)/(dx*dx+dy*dy)));
+          return Math.sqrt((px2-x1-t*dx)**2+(py2-y1-t*dy)**2);
+        }
+        var pxW=player.x+player.w/2;
+        var pyW=player.y+player.h/2;
+        if(distToSeg(pxW,pyW,o.x+cameraX+Math.cos(o.angle)*o.radius,endY1,o.x+cameraX-Math.cos(o.angle)*o.radius,endY2)<20){
+          hitPlayer();
+        }
+      }
+      if(o.type==='ball'){
+        o.y=o.baseY+Math.sin(Date.now()*0.004)*o.range;
+        if(collideRect(player.x,player.y,player.w,player.h,o.x+cameraX-o.radius,o.y-o.radius,o.radius*2,o.radius*2)){
+          hitPlayer();
+        }
+      }
+      if(o.type==='falling'){
+        o.y+=o.vy;
+        if(o.y>o.groundY){o.y=o.baseY;o.x=o.x+(Math.random()-0.5)*40;}
+        if(collideRect(player.x,player.y,player.w,player.h,o.x+cameraX,o.y,o.w,o.h)){
+          hitPlayer();
+        }
+      }
+    }
+
+    // Update NPCs
+    for(var i=0;i<npcs.length;i++){
+      var n=npcs[i];
+      if(n.dead)continue;
+      n.x+=n.vx;n.vy+=GRAV;n.y+=n.vy;
+      n.jumpTimer--;
+      if(n.jumpTimer<=0&&n.onGround){n.vy=JUMP*0.9;n.onGround=false;n.jumpTimer=40+Math.random()*50;}
+      n.onGround=false;
+      for(var j=0;j<platforms.length;j++){
+        var p=platforms[j];
+        if(p.type==='crumble'&&p.gone)continue;
+        if(n.vy>=0&&n.x+n.w>p.x&&n.x<p.x+p.w&&n.y+n.h>=p.y&&n.y+n.h<=p.y+14){
+          n.y=p.y-n.h;n.vy=0;n.onGround=true;
+        }
+      }
+      if(n.y>RH+100)n.dead=true;
+    }
+
+    // Camera
+    var targetCam=player.x-RW*0.35;
+    cameraX+=(targetCam-cameraX)*0.08;
+    if(cameraX<0)cameraX=0;
+
+    // Particles
+    for(var i=particles.length-1;i>=0;i--){
+      var pp=particles[i];
+      pp.x+=pp.vx;pp.y+=pp.vy;pp.vy+=0.2;pp.life--;
+      if(pp.life<=0)particles.splice(i,1);
+    }
+
+    // Goal check
+    if(player.x>GOAL_X+cameraX-100){
+      stageClear=true;
+      stageMsgTimer=100;
+      if(stage>=3){
+        allClear=true;
+        stageMsg='ALL CLEAR!';
+        for(var i=0;i<40;i++)particles.push(new Particle(player.x,player.y,['#FFD700','#FF6B9D','#4A90D9','#6BCB77'][i%4]));
+      } else {
+        stageMsg='STAGE '+stage+' CLEAR!';
+        for(var i=0;i<20;i++)particles.push(new Particle(player.x,player.y,'#FFD700'));
+      }
+    }
+
+    // Timer
+    totalTime+=(1/60);
+    document.getElementById('race-time').textContent=totalTime.toFixed(1);
+  }
+
+  function draw(){
+    // Sky
+    var grad=rCtx.createLinearGradient(0,0,0,RH);
+    if(stage===1){grad.addColorStop(0,'#87CEEB');grad.addColorStop(1,'#E0F0FF');}
+    else if(stage===2){grad.addColorStop(0,'#FF9A76');grad.addColorStop(1,'#FFECD2');}
+    else{grad.addColorStop(0,'#667eea');grad.addColorStop(1,'#764ba2');}
+    rCtx.fillStyle=grad;rCtx.fillRect(0,0,RW,RH);
+
+    // Clouds
+    rCtx.fillStyle='rgba(255,255,255,0.4)';
+    for(var i=0;i<6;i++){
+      var cx=(i*300+50-cameraX*0.2)%((RW+200))-50;
+      var cy=30+i*15;
+      rCtx.beginPath();rCtx.arc(cx,cy,20,0,Math.PI*2);rCtx.arc(cx+18,cy-5,16,0,Math.PI*2);rCtx.arc(cx+30,cy,14,0,Math.PI*2);rCtx.fill();
+    }
+
+    rCtx.save();
+    rCtx.translate(-cameraX,0);
+
+    // Platforms
+    for(var i=0;i<platforms.length;i++){
+      var p=platforms[i];
+      if(p.type==='crumble'&&p.gone)continue;
+      if(p.type==='solid'){
+        rCtx.fillStyle='#5D4E37';rCtx.fillRect(p.x,p.y,p.w,p.h);
+        rCtx.fillStyle='#7D6E57';rCtx.fillRect(p.x,p.y,p.w,6);
+        rCtx.fillStyle='#8B7D63';rCtx.fillRect(p.x,p.y,p.w,3);
+      }
+      if(p.type==='crumble'){
+        var shake=p.timer>0?Math.sin(p.timer*0.5)*2:0;
+        rCtx.fillStyle=p.timer>p.crumbleTime*0.7?'#AA5533':'#CC8855';
+        rCtx.fillRect(p.x+shake,p.y,p.w,p.h);
+        rCtx.strokeStyle='rgba(0,0,0,0.2)';rCtx.setLineDash([4,4]);
+        rCtx.strokeRect(p.x+shake,p.y,p.w,p.h);rCtx.setLineDash([]);
+      }
+      if(p.type==='moving'){
+        rCtx.fillStyle='#4A90D9';rCtx.fillRect(p.x,p.y,p.w,p.h);
+        rCtx.fillStyle='#6BB5FF';rCtx.fillRect(p.x,p.y,p.w,4);
+      }
+    }
+
+    // Goal
+    rCtx.fillStyle='#FFD700';
+    rCtx.fillRect(GOAL_X,RH-120,8,80);
+    rCtx.fillRect(GOAL_X+60,RH-120,8,80);
+    rCtx.fillStyle='rgba(255,215,0,0.3)';
+    rCtx.fillRect(GOAL_X,RH-120,68,20);
+    rCtx.fillStyle='#FFD700';rCtx.font='bold 12px sans-serif';rCtx.textAlign='center';
+    rCtx.fillText('GOAL',GOAL_X+34,RH-126);
+
+    // Obstacles
+    for(var i=0;i<obstacles.length;i++){
+      var o=obstacles[i];
+      if(o.type==='spinner'){
+        rCtx.save();rCtx.translate(o.x,o.y);
+        rCtx.rotate(o.angle);
+        rCtx.fillStyle='#E74C3C';
+        rCtx.beginPath();rCtx.roundRect(-o.radius,-6,o.radius*2,12,6);rCtx.fill();
+        rCtx.fillStyle='#C0392B';
+        rCtx.beginPath();rCtx.arc(0,0,10,0,Math.PI*2);rCtx.fill();
+        rCtx.restore();
+      }
+      if(o.type==='ball'){
+        rCtx.fillStyle='#E74C3C';
+        rCtx.beginPath();rCtx.arc(o.x,o.y,o.radius,0,Math.PI*2);rCtx.fill();
+        rCtx.fillStyle='rgba(255,255,255,0.3)';
+        rCtx.beginPath();rCtx.arc(o.x-o.radius*0.3,o.y-o.radius*0.3,o.radius*0.3,0,Math.PI*2);rCtx.fill();
+      }
+      if(o.type==='falling'){
+        rCtx.fillStyle='#95a5a6';rCtx.fillRect(o.x,o.y,o.w,o.h);
+        rCtx.fillStyle='#7f8c8d';rCtx.fillRect(o.x,o.y+o.h-4,o.w,4);
+      }
+    }
+
+    // NPCs
+    for(var i=0;i<npcs.length;i++){
+      var n=npcs[i];
+      if(n.dead)continue;
+      // Body (bean shape)
+      rCtx.fillStyle=n.color;
+      rCtx.beginPath();rCtx.roundRect(n.x,n.y,n.w,n.h,12);rCtx.fill();
+      // Eyes
+      rCtx.fillStyle='white';
+      rCtx.beginPath();rCtx.arc(n.x+8,n.y+10,5,0,Math.PI*2);rCtx.arc(n.x+18,n.y+10,5,0,Math.PI*2);rCtx.fill();
+      rCtx.fillStyle='#333';
+      rCtx.beginPath();rCtx.arc(n.x+9,n.y+10,2.5,0,Math.PI*2);rCtx.arc(n.x+19,n.y+10,2.5,0,Math.PI*2);rCtx.fill();
+    }
+
+    // Player
+    if(!rGameOver){
+      var alpha=(player.invincible>0&&Math.floor(player.invincible/4)%2)?0.3:1;
+      rCtx.globalAlpha=alpha;
+      // Bean body
+      rCtx.fillStyle=player.color;
+      rCtx.beginPath();rCtx.roundRect(player.x,player.y,player.w,player.h,13);rCtx.fill();
+      // Belly
+      rCtx.fillStyle='rgba(255,255,255,0.25)';
+      rCtx.beginPath();rCtx.ellipse(player.x+player.w/2,player.y+player.h*0.6,8,10,0,0,Math.PI*2);rCtx.fill();
+      // Eyes
+      rCtx.fillStyle='white';
+      rCtx.beginPath();rCtx.arc(player.x+8,player.y+11,5.5,0,Math.PI*2);rCtx.arc(player.x+19,player.y+11,5.5,0,Math.PI*2);rCtx.fill();
+      rCtx.fillStyle=player.eyeColor;
+      var ex=player.vx>0?1.5:player.vx<0?-1.5:0;
+      rCtx.beginPath();rCtx.arc(player.x+8+ex,player.y+11,3,0,Math.PI*2);rCtx.arc(player.x+19+ex,player.y+11,3,0,Math.PI*2);rCtx.fill();
+      // Cheeks
+      rCtx.fillStyle='rgba(255,150,150,0.4)';
+      rCtx.beginPath();rCtx.arc(player.x+3,player.y+18,3,0,Math.PI*2);rCtx.arc(player.x+23,player.y+18,3,0,Math.PI*2);rCtx.fill();
+      // Crown
+      rCtx.fillStyle='#FFD700';
+      rCtx.beginPath();
+      rCtx.moveTo(player.x+5,player.y+2);rCtx.lineTo(player.x+8,player.y-6);
+      rCtx.lineTo(player.x+13,player.y);rCtx.lineTo(player.x+18,player.y-6);
+      rCtx.lineTo(player.x+21,player.y+2);rCtx.closePath();rCtx.fill();
+      rCtx.globalAlpha=1;
+      // Name
+      rCtx.fillStyle='white';rCtx.font='bold 10px sans-serif';rCtx.textAlign='center';
+      rCtx.fillText('건희',player.x+player.w/2,player.y-8);
+    }
+
+    // Particles
+    for(var i=0;i<particles.length;i++){
+      var pp=particles[i];
+      rCtx.globalAlpha=pp.life/50;
+      rCtx.fillStyle=pp.color;
+      rCtx.beginPath();rCtx.arc(pp.x,pp.y,pp.size,0,Math.PI*2);rCtx.fill();
+    }
+    rCtx.globalAlpha=1;
+
+    rCtx.restore();
+
+    // Stage message overlay
+    if(stageMsgTimer>0){
+      rCtx.fillStyle='rgba(0,0,0,0.5)';rCtx.fillRect(0,RH/2-35,RW,70);
+      rCtx.fillStyle='#FFD700';rCtx.font='bold 26px sans-serif';rCtx.textAlign='center';
+      rCtx.fillText(stageMsg,RW/2,RH/2+6);
+      if(rGameOver){
+        rCtx.fillStyle='rgba(255,255,255,0.6)';rCtx.font='13px sans-serif';
+        rCtx.fillText('Tap or press any key to restart',RW/2,RH/2+28);
+      }
+      if(allClear){
+        rCtx.fillStyle='white';rCtx.font='14px sans-serif';
+        rCtx.fillText('Total Time: '+totalTime.toFixed(1)+'s',RW/2,RH/2+28);
+      }
+    }
+  }
+
+  function rLoop(){
+    if(!rRunning)return;
+    update();
+    draw();
+    if(stageClear&&!allClear){
+      stageMsgTimer--;
+      if(stageMsgTimer<=0){
+        stage++;
+        document.getElementById('race-stage').textContent=stage;
+        buildStage(stage);
+        resetPlayer();
+        stageClear=false;
+      }
+    }
+    rAnim=requestAnimationFrame(rLoop);
+  }
+
+  window.startRace=function(){
+    document.getElementById('race-start').style.display='none';
+    document.getElementById('race-container').style.display='block';
+    rCanvas=document.getElementById('raceCanvas');
+    var rect=rCanvas.parentElement.getBoundingClientRect();
+    RW=Math.min(460,rect.width);RH=Math.round(RW*0.55);
+    rCanvas.width=RW;rCanvas.height=RH;
+    rCtx=rCanvas.getContext('2d');
+    if('ontouchstart' in window)document.getElementById('race-mobile-ctrl').style.display='block';
+    restartRace();
+  };
+
+  function restartRace(){
+    stage=1;lives=3;totalTime=0;rGameOver=false;stageClear=false;allClear=false;
+    stageMsg='STAGE 1';stageMsgTimer=60;
+    player=new Player();
+    document.getElementById('race-stage').textContent='1';
+    document.getElementById('race-time').textContent='0.0';
+    updateLivesUI();
+    buildStage(1);
+    cameraX=0;
+    rRunning=true;
+    if(rAnim)cancelAnimationFrame(rAnim);
+    rAnim=requestAnimationFrame(rLoop);
+  }
+
+  document.addEventListener('keydown',function(e){
+    if(!rRunning)return;
+    rKeys[e.key]=true;
+    if(rGameOver||allClear){restartRace();}
+    if(e.key===' '||e.key==='ArrowUp')e.preventDefault();
+  });
+  document.addEventListener('keyup',function(e){rKeys[e.key]=false;});
+
+  document.querySelectorAll('.race-ctrl').forEach(function(btn){
+    var a=btn.dataset.action;
+    btn.addEventListener('touchstart',function(e){
+      e.preventDefault();rKeys[a]=true;
+      if(rGameOver||allClear)restartRace();
+    });
+    btn.addEventListener('touchend',function(e){e.preventDefault();rKeys[a]=false;});
+  });
+
+  var rc=document.getElementById('raceCanvas');
+  if(rc)rc.addEventListener('click',function(){if(rGameOver||allClear)restartRace();});
 })();
 </script>
 </body>
