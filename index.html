@@ -708,7 +708,8 @@ section {
   <div style="text-align:center; padding:40px 20px;">
     <div style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:6px; color:#C9A96E; margin-bottom:16px; text-transform:uppercase;">Private Invitation</div>
     <div style="font-size:20px; font-weight:300; color:#3A3A3A; margin-bottom:8px;">이건희 & 전다희</div>
-    <div style="font-size:13px; color:#999; margin-bottom:40px;">초대받은 분만 입장하실 수 있습니다</div>
+    <div style="font-size:13px; color:#999; margin-bottom:12px;">초대받은 분만 입장하실 수 있습니다</div>
+    <div style="font-size:12px; color:#C9A96E; margin-bottom:40px;">힌트: 스타크래프트 인샬라 채널</div>
     <input id="pw-input" type="password" placeholder="비밀번호를 입력하세요" style="
       width:240px; padding:14px 20px; border:1px solid #E8D5A8; border-radius:30px;
       background:white; font-size:14px; font-family:inherit; text-align:center;
@@ -725,7 +726,7 @@ section {
 <script>
 function checkPw(){
   var v=document.getElementById('pw-input').value;
-  if(v==='인샬라'){
+  if(v==='15912'){
     document.getElementById('password-gate').style.opacity='0';
     document.getElementById('password-gate').style.transition='opacity 0.5s';
     setTimeout(function(){document.getElementById('password-gate').style.display='none';},500);
