@@ -1011,6 +1011,98 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </section>
 
+<!-- Tetris Game -->
+<section class="game-section animate-on-scroll" style="background:var(--warm-white); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">Wedding Tetris</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">하트 블록을 쌓아보세요!</p>
+  <div class="divider"></div>
+
+  <div id="tetris-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:#1a1a2e; border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E; letter-spacing:4px; margin-bottom:8px;">WEDDING</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:42px; color:white; letter-spacing:6px; margin-bottom:20px;">TETRIS</div>
+      <button onclick="startTetris()" style="padding:14px 50px; background:#C9A96E; color:white; border:none; border-radius:30px; font-size:16px; font-family:inherit; cursor:pointer; letter-spacing:3px; transition:all 0.3s; box-shadow:0 4px 15px rgba(201,169,110,0.4);">START</button>
+      <div style="margin-top:20px; font-size:11px; color:#666; line-height:2;">
+        <span style="color:#C9A96E;">PC</span> ←/→ 이동 | ↑ 회전 | ↓ 빠르게 | Space 드롭<br>
+        <span style="color:#C9A96E;">Mobile</span> 하단 버튼으로 조작
+      </div>
+    </div>
+  </div>
+
+  <div id="tetris-container" style="display:none; max-width:460px; margin:0 auto; padding:0 10px;">
+    <div style="display:flex; justify-content:center; gap:16px; align-items:flex-start;">
+      <canvas id="tetrisCanvas" style="border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.2);"></canvas>
+      <div id="tetris-info" style="text-align:left;">
+        <div style="background:#1a1a2e; border-radius:8px; padding:14px; margin-bottom:10px;">
+          <div style="font-size:10px; color:#C9A96E; letter-spacing:2px;">SCORE</div>
+          <div id="tetris-score" style="font-size:22px; color:white; font-family:'Cormorant Garamond',serif;">0</div>
+        </div>
+        <div style="background:#1a1a2e; border-radius:8px; padding:14px; margin-bottom:10px;">
+          <div style="font-size:10px; color:#C9A96E; letter-spacing:2px;">LEVEL</div>
+          <div id="tetris-level" style="font-size:22px; color:white; font-family:'Cormorant Garamond',serif;">1</div>
+        </div>
+        <div style="background:#1a1a2e; border-radius:8px; padding:14px;">
+          <div style="font-size:10px; color:#C9A96E; letter-spacing:2px;">LINES</div>
+          <div id="tetris-lines" style="font-size:22px; color:white; font-family:'Cormorant Garamond',serif;">0</div>
+        </div>
+      </div>
+    </div>
+    <div id="tetris-mobile-ctrl" style="display:none; margin-top:12px; user-select:none; -webkit-user-select:none;">
+      <div style="display:flex; justify-content:space-between; padding:0 4px;">
+        <div style="display:flex; gap:8px;">
+          <button class="tetris-ctrl" data-action="left" style="width:52px;height:52px;border-radius:50%;border:2px solid #C9A96E;background:rgba(201,169,110,0.1);color:#C9A96E;font-size:18px;cursor:pointer;">&#9664;</button>
+          <button class="tetris-ctrl" data-action="right" style="width:52px;height:52px;border-radius:50%;border:2px solid #C9A96E;background:rgba(201,169,110,0.1);color:#C9A96E;font-size:18px;cursor:pointer;">&#9654;</button>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="tetris-ctrl" data-action="rotate" style="width:52px;height:52px;border-radius:50%;border:2px solid #4A90D9;background:rgba(74,144,217,0.1);color:#4A90D9;font-size:11px;cursor:pointer;font-weight:700;">회전</button>
+          <button class="tetris-ctrl" data-action="down" style="width:52px;height:52px;border-radius:50%;border:2px solid #D4A5A5;background:rgba(212,165,165,0.1);color:#D4A5A5;font-size:18px;cursor:pointer;">&#9660;</button>
+          <button class="tetris-ctrl" data-action="drop" style="width:52px;height:52px;border-radius:50%;border:2px solid #E8644A;background:rgba(232,100,74,0.1);color:#E8644A;font-size:11px;cursor:pointer;font-weight:700;">DROP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Minesweeper Game -->
+<section class="game-section animate-on-scroll" style="background:var(--cream); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">Wedding Minesweeper</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">폭탄을 피해 모든 칸을 열어보세요!</p>
+  <div class="divider"></div>
+
+  <div id="mines-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:#1a1a2e; border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E; letter-spacing:4px; margin-bottom:8px;">WEDDING</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:white; letter-spacing:4px; margin-bottom:20px;">MINESWEEPER</div>
+      <div style="display:flex; justify-content:center; gap:10px; margin-bottom:20px;">
+        <button onclick="startMines(8,8,10)" class="mine-diff" style="padding:10px 20px; background:transparent; border:1px solid #4CAF50; color:#4CAF50; border-radius:20px; font-size:13px; font-family:inherit; cursor:pointer;">Easy 8x8</button>
+        <button onclick="startMines(10,10,15)" class="mine-diff" style="padding:10px 20px; background:#C9A96E; border:1px solid #C9A96E; color:white; border-radius:20px; font-size:13px; font-family:inherit; cursor:pointer;">Normal 10x10</button>
+        <button onclick="startMines(12,12,25)" class="mine-diff" style="padding:10px 20px; background:transparent; border:1px solid #F44336; color:#F44336; border-radius:20px; font-size:13px; font-family:inherit; cursor:pointer;">Hard 12x12</button>
+      </div>
+      <div style="font-size:11px; color:#666; line-height:2;">
+        <span style="color:#C9A96E;">클릭</span> 칸 열기 | <span style="color:#C9A96E;">길게 누르기/우클릭</span> 깃발 꽂기
+      </div>
+    </div>
+  </div>
+
+  <div id="mines-container" style="display:none; max-width:460px; margin:0 auto; padding:0 10px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
+      <div style="background:#1a1a2e; border-radius:8px; padding:8px 16px; display:flex; align-items:center; gap:6px;">
+        <span style="font-size:16px;">&#x1F4A3;</span>
+        <span id="mines-count" style="font-size:18px; color:white; font-family:'Cormorant Garamond',serif;">0</span>
+      </div>
+      <button onclick="restartMines()" style="padding:8px 20px; background:#C9A96E; color:white; border:none; border-radius:20px; font-size:12px; font-family:inherit; cursor:pointer; letter-spacing:1px;">RESTART</button>
+      <div style="background:#1a1a2e; border-radius:8px; padding:8px 16px; display:flex; align-items:center; gap:6px;">
+        <span style="font-size:16px;">&#x23F1;</span>
+        <span id="mines-timer" style="font-size:18px; color:white; font-family:'Cormorant Garamond',serif;">0</span>
+      </div>
+    </div>
+    <div id="mines-board" style="display:inline-grid; gap:2px; background:#1a1a2e; padding:8px; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.2);"></div>
+    <div id="mines-result" style="margin-top:16px; font-size:18px; color:#C9A96E; font-weight:bold; min-height:28px;"></div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-heart">&#x2665;</div>
@@ -1703,6 +1795,296 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
     startRound();
   }
 });
+
+// ========== TETRIS ==========
+(function(){
+  var COLS=10, ROWS=20, BLOCK=0, tCanvas, tCtx, board, piece, nextPiece;
+  var score=0, level=1, lines=0, dropInterval, dropTimer, tRunning=false, tOver=false, tAnim;
+  var COLORS=['#00f0f0','#f0f000','#a000f0','#00f000','#f00000','#0000f0','#f0a000'];
+  var SHAPES=[
+    [[1,1,1,1]],
+    [[1,1],[1,1]],
+    [[0,1,0],[1,1,1]],
+    [[0,1,1],[1,1,0]],
+    [[1,1,0],[0,1,1]],
+    [[1,0,0],[1,1,1]],
+    [[0,0,1],[1,1,1]]
+  ];
+
+  function newPiece(){
+    var i=Math.floor(Math.random()*SHAPES.length);
+    return{shape:SHAPES[i].map(function(r){return r.slice();}),color:COLORS[i],x:Math.floor(COLS/2)-1,y:0};
+  }
+  function rotate(shape){
+    var rows=shape.length,cols=shape[0].length;
+    var r=[];
+    for(var c=0;c<cols;c++){r[c]=[];for(var rr=rows-1;rr>=0;rr--){r[c].push(shape[rr][c]);}}
+    return r;
+  }
+  function valid(shape,px,py){
+    for(var r=0;r<shape.length;r++)for(var c=0;c<shape[r].length;c++){
+      if(!shape[r][c])continue;
+      var nx=px+c,ny=py+r;
+      if(nx<0||nx>=COLS||ny>=ROWS)return false;
+      if(ny>=0&&board[ny][nx])return false;
+    }
+    return true;
+  }
+  function lock(){
+    for(var r=0;r<piece.shape.length;r++)for(var c=0;c<piece.shape[r].length;c++){
+      if(!piece.shape[r][c])continue;
+      var ny=piece.y+r;
+      if(ny<0){tOver=true;return;}
+      board[ny][piece.x+c]=piece.color;
+    }
+    clearLines();
+    piece=nextPiece;
+    nextPiece=newPiece();
+    if(!valid(piece.shape,piece.x,piece.y))tOver=true;
+  }
+  function clearLines(){
+    var cleared=0;
+    for(var r=ROWS-1;r>=0;r--){
+      if(board[r].every(function(c){return c;})){
+        board.splice(r,1);
+        board.unshift(new Array(COLS).fill(0));
+        cleared++;r++;
+      }
+    }
+    if(cleared){
+      lines+=cleared;
+      score+=[0,100,300,500,800][cleared]*level;
+      level=Math.floor(lines/10)+1;
+      dropInterval=Math.max(100,1000-level*80);
+      document.getElementById('tetris-score').textContent=score;
+      document.getElementById('tetris-level').textContent=level;
+      document.getElementById('tetris-lines').textContent=lines;
+    }
+  }
+  function drawTetris(){
+    BLOCK=Math.floor(Math.min(260,tCanvas.parentElement.getBoundingClientRect().width*0.55)/COLS);
+    tCanvas.width=COLS*BLOCK;tCanvas.height=ROWS*BLOCK;
+    tCtx.fillStyle='#0f0f23';tCtx.fillRect(0,0,tCanvas.width,tCanvas.height);
+    // Grid
+    tCtx.strokeStyle='rgba(255,255,255,0.03)';
+    for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){tCtx.strokeRect(c*BLOCK,r*BLOCK,BLOCK,BLOCK);}
+    // Board
+    for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){
+      if(board[r][c]){
+        tCtx.fillStyle=board[r][c];
+        tCtx.fillRect(c*BLOCK+1,r*BLOCK+1,BLOCK-2,BLOCK-2);
+        tCtx.fillStyle='rgba(255,255,255,0.15)';
+        tCtx.fillRect(c*BLOCK+1,r*BLOCK+1,BLOCK-2,3);
+      }
+    }
+    // Ghost
+    if(piece&&!tOver){
+      var gy=piece.y;
+      while(valid(piece.shape,piece.x,gy+1))gy++;
+      tCtx.globalAlpha=0.2;
+      for(var r=0;r<piece.shape.length;r++)for(var c=0;c<piece.shape[r].length;c++){
+        if(piece.shape[r][c]){tCtx.fillStyle=piece.color;tCtx.fillRect((piece.x+c)*BLOCK+1,(gy+r)*BLOCK+1,BLOCK-2,BLOCK-2);}
+      }
+      tCtx.globalAlpha=1;
+      // Piece
+      for(var r=0;r<piece.shape.length;r++)for(var c=0;c<piece.shape[r].length;c++){
+        if(piece.shape[r][c]){
+          tCtx.fillStyle=piece.color;
+          tCtx.fillRect((piece.x+c)*BLOCK+1,(piece.y+r)*BLOCK+1,BLOCK-2,BLOCK-2);
+          tCtx.fillStyle='rgba(255,255,255,0.2)';
+          tCtx.fillRect((piece.x+c)*BLOCK+1,(piece.y+r)*BLOCK+1,BLOCK-2,3);
+        }
+      }
+    }
+    if(tOver){
+      tCtx.fillStyle='rgba(0,0,0,0.6)';tCtx.fillRect(0,0,tCanvas.width,tCanvas.height);
+      tCtx.fillStyle='#C9A96E';tCtx.font='bold 20px sans-serif';tCtx.textAlign='center';
+      tCtx.fillText('GAME OVER',tCanvas.width/2,tCanvas.height/2-10);
+      tCtx.fillStyle='white';tCtx.font='14px sans-serif';
+      tCtx.fillText('Score: '+score,tCanvas.width/2,tCanvas.height/2+16);
+      tCtx.fillStyle='rgba(255,255,255,0.5)';tCtx.font='11px sans-serif';
+      tCtx.fillText('Tap to restart',tCanvas.width/2,tCanvas.height/2+38);
+    }
+  }
+  var lastTime=0;
+  function tLoop(time){
+    if(!tRunning)return;
+    var dt=time-lastTime;
+    if(!tOver){
+      dropTimer+=dt;
+      if(dropTimer>=dropInterval){
+        dropTimer=0;
+        if(valid(piece.shape,piece.x,piece.y+1))piece.y++;
+        else lock();
+      }
+    }
+    lastTime=time;
+    drawTetris();
+    tAnim=requestAnimationFrame(tLoop);
+  }
+  window.startTetris=function(){
+    document.getElementById('tetris-start').style.display='none';
+    document.getElementById('tetris-container').style.display='block';
+    tCanvas=document.getElementById('tetrisCanvas');
+    tCtx=tCanvas.getContext('2d');
+    if('ontouchstart' in window)document.getElementById('tetris-mobile-ctrl').style.display='block';
+    resetTetris();
+  };
+  function resetTetris(){
+    board=[];for(var r=0;r<ROWS;r++)board.push(new Array(COLS).fill(0));
+    score=0;level=1;lines=0;dropInterval=1000;dropTimer=0;tOver=false;
+    piece=newPiece();nextPiece=newPiece();
+    document.getElementById('tetris-score').textContent='0';
+    document.getElementById('tetris-level').textContent='1';
+    document.getElementById('tetris-lines').textContent='0';
+    tRunning=true;lastTime=performance.now();
+    if(tAnim)cancelAnimationFrame(tAnim);
+    tAnim=requestAnimationFrame(tLoop);
+  }
+  function tAction(action){
+    if(tOver){if(action)resetTetris();return;}
+    if(!piece)return;
+    if(action==='left'&&valid(piece.shape,piece.x-1,piece.y))piece.x--;
+    if(action==='right'&&valid(piece.shape,piece.x+1,piece.y))piece.x++;
+    if(action==='down'){if(valid(piece.shape,piece.x,piece.y+1))piece.y++;else lock();}
+    if(action==='rotate'){var rot=rotate(piece.shape);if(valid(rot,piece.x,piece.y))piece.shape=rot;
+      else if(valid(rot,piece.x-1,piece.y)){piece.shape=rot;piece.x--;}
+      else if(valid(rot,piece.x+1,piece.y)){piece.shape=rot;piece.x++;}
+    }
+    if(action==='drop'){while(valid(piece.shape,piece.x,piece.y+1))piece.y++;lock();}
+  }
+  document.addEventListener('keydown',function(e){
+    if(!tRunning||!document.getElementById('tetris-container').offsetParent)return;
+    if(e.key==='ArrowLeft'){tAction('left');e.preventDefault();}
+    if(e.key==='ArrowRight'){tAction('right');e.preventDefault();}
+    if(e.key==='ArrowDown'){tAction('down');e.preventDefault();}
+    if(e.key==='ArrowUp'){tAction('rotate');e.preventDefault();}
+    if(e.key===' '){tAction('drop');e.preventDefault();}
+  });
+  document.querySelectorAll('.tetris-ctrl').forEach(function(btn){
+    btn.addEventListener('touchstart',function(e){e.preventDefault();tAction(btn.dataset.action);});
+  });
+  tCanvas=document.getElementById('tetrisCanvas');
+  if(tCanvas)tCanvas.addEventListener('click',function(){if(tOver)resetTetris();});
+})();
+
+// ========== MINESWEEPER ==========
+(function(){
+  var mCols,mRows,mMines,mBoard,mRevealed,mFlags,mGameOver,mWin,mFirstClick,mTimerInt,mTime;
+  var longPressTimer,longPressed;
+
+  window.startMines=function(cols,rows,mines){
+    mCols=cols;mRows=rows;mMines=mines;
+    document.getElementById('mines-start').style.display='none';
+    document.getElementById('mines-container').style.display='block';
+    initMines();
+  };
+  window.restartMines=function(){initMines();};
+
+  function initMines(){
+    mBoard=[];mRevealed=[];mFlags=[];mGameOver=false;mWin=false;mFirstClick=true;mTime=0;
+    if(mTimerInt)clearInterval(mTimerInt);
+    document.getElementById('mines-timer').textContent='0';
+    document.getElementById('mines-result').textContent='';
+    document.getElementById('mines-count').textContent=mMines;
+    for(var r=0;r<mRows;r++){
+      mBoard[r]=[];mRevealed[r]=[];mFlags[r]=[];
+      for(var c=0;c<mCols;c++){mBoard[r][c]=0;mRevealed[r][c]=false;mFlags[r][c]=false;}
+    }
+    renderMines();
+  }
+  function placeMines(safeR,safeC){
+    var placed=0;
+    while(placed<mMines){
+      var r=Math.floor(Math.random()*mRows),c=Math.floor(Math.random()*mCols);
+      if(mBoard[r][c]===-1)continue;
+      if(Math.abs(r-safeR)<=1&&Math.abs(c-safeC)<=1)continue;
+      mBoard[r][c]=-1;placed++;
+    }
+    for(var r=0;r<mRows;r++)for(var c=0;c<mCols;c++){
+      if(mBoard[r][c]===-1)continue;
+      var cnt=0;
+      for(var dr=-1;dr<=1;dr++)for(var dc=-1;dc<=1;dc++){
+        var nr=r+dr,nc=c+dc;
+        if(nr>=0&&nr<mRows&&nc>=0&&nc<mCols&&mBoard[nr][nc]===-1)cnt++;
+      }
+      mBoard[r][c]=cnt;
+    }
+  }
+  function reveal(r,c){
+    if(r<0||r>=mRows||c<0||c>=mCols||mRevealed[r][c]||mFlags[r][c])return;
+    mRevealed[r][c]=true;
+    if(mBoard[r][c]===0){
+      for(var dr=-1;dr<=1;dr++)for(var dc=-1;dc<=1;dc++)reveal(r+dr,c+dc);
+    }
+  }
+  function checkWin(){
+    var unrevealed=0;
+    for(var r=0;r<mRows;r++)for(var c=0;c<mCols;c++){if(!mRevealed[r][c])unrevealed++;}
+    if(unrevealed===mMines){mWin=true;mGameOver=true;clearInterval(mTimerInt);
+      document.getElementById('mines-result').innerHTML='&#x1F389; 축하합니다! 클리어!';
+    }
+  }
+  function cellClick(r,c){
+    if(mGameOver||mFlags[r][c])return;
+    if(mFirstClick){
+      mFirstClick=false;
+      placeMines(r,c);
+      mTimerInt=setInterval(function(){mTime++;document.getElementById('mines-timer').textContent=mTime;},1000);
+    }
+    if(mBoard[r][c]===-1){
+      mGameOver=true;clearInterval(mTimerInt);
+      for(var rr=0;rr<mRows;rr++)for(var cc=0;cc<mCols;cc++){if(mBoard[rr][cc]===-1)mRevealed[rr][cc]=true;}
+      document.getElementById('mines-result').innerHTML='&#x1F4A5; Game Over!';
+      renderMines();return;
+    }
+    reveal(r,c);
+    checkWin();
+    renderMines();
+  }
+  function flagCell(r,c){
+    if(mGameOver||mRevealed[r][c])return;
+    mFlags[r][c]=!mFlags[r][c];
+    var fc=0;for(var rr=0;rr<mRows;rr++)for(var cc=0;cc<mCols;cc++){if(mFlags[rr][cc])fc++;}
+    document.getElementById('mines-count').textContent=mMines-fc;
+    renderMines();
+  }
+  function renderMines(){
+    var bd=document.getElementById('mines-board');
+    var maxW=Math.min(440,window.innerWidth-40);
+    var cellSize=Math.floor((maxW-mCols*2-16)/mCols);
+    cellSize=Math.max(24,Math.min(36,cellSize));
+    bd.style.gridTemplateColumns='repeat('+mCols+','+cellSize+'px)';
+    bd.innerHTML='';
+    var numColors=['','#4A90D9','#4CAF50','#F44336','#1a237e','#880e4f','#00838f','#333','#999'];
+    for(var r=0;r<mRows;r++)for(var c=0;c<mCols;c++){
+      var cell=document.createElement('div');
+      cell.style.cssText='width:'+cellSize+'px;height:'+cellSize+'px;display:flex;align-items:center;justify-content:center;border-radius:3px;font-size:'+(cellSize>30?'14':'12')+'px;font-weight:bold;cursor:pointer;user-select:none;-webkit-user-select:none;transition:all 0.1s;';
+      if(mRevealed[r][c]){
+        cell.style.background='#2a2a4e';
+        if(mBoard[r][c]===-1){cell.textContent='&#x1F4A3;';cell.innerHTML='&#x1F4A3;';cell.style.background='#4a1a1a';}
+        else if(mBoard[r][c]>0){cell.textContent=mBoard[r][c];cell.style.color=numColors[mBoard[r][c]];}
+      } else if(mFlags[r][c]){
+        cell.style.background='#2c2c5e';cell.innerHTML='&#x1F6A9;';
+      } else {
+        cell.style.background='#3a3a6e';
+        cell.onmouseenter=function(){this.style.background='#4a4a8e';};
+        cell.onmouseleave=function(){this.style.background='#3a3a6e';};
+      }
+      (function(row,col){
+        cell.addEventListener('click',function(){if(!longPressed)cellClick(row,col);longPressed=false;});
+        cell.addEventListener('contextmenu',function(e){e.preventDefault();flagCell(row,col);});
+        cell.addEventListener('touchstart',function(e){
+          longPressed=false;
+          longPressTimer=setTimeout(function(){longPressed=true;flagCell(row,col);},500);
+        });
+        cell.addEventListener('touchend',function(){clearTimeout(longPressTimer);});
+        cell.addEventListener('touchmove',function(){clearTimeout(longPressTimer);});
+      })(r,c);
+      bd.appendChild(cell);
+    }
+  }
+})();
 </script>
 </body>
 </html>
