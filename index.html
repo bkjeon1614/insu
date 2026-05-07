@@ -1168,6 +1168,47 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </section>
 
+<!-- Spider Solitaire -->
+<section class="game-section animate-on-scroll" style="background:var(--cream); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">Wedding Spider</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">하트로 가득한 스파이더 솔리테어! K부터 A까지 정렬해보세요.</p>
+  <div class="divider"></div>
+
+  <div id="spider-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f0f1e 100%); border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E; letter-spacing:4px; margin-bottom:8px;">WEDDING</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:42px; color:white; letter-spacing:6px; margin-bottom:12px;">SPIDER</div>
+      <div style="font-size:13px; color:#888; margin-bottom:24px;">하트 스파이더 솔리테어</div>
+      <button onclick="startSpider()" style="padding:14px 50px; background:#C9A96E; color:white; border:none; border-radius:30px; font-size:16px; font-family:inherit; cursor:pointer; letter-spacing:3px; transition:all 0.3s; box-shadow:0 4px 15px rgba(201,169,110,0.4);">START</button>
+      <div style="margin-top:24px; padding:0 10px; font-size:11px; color:#aaa; line-height:1.9; text-align:left;">
+        <div style="color:#C9A96E; letter-spacing:2px; text-align:center; margin-bottom:10px;">HOW TO PLAY</div>
+        <span style="color:#E8644A;">&hearts;</span> 카드를 탭해서 선택 후 옮길 곳을 탭하세요<br>
+        <span style="color:#E8644A;">&hearts;</span> 큰 숫자 위에 작은 숫자만 놓을 수 있어요 (6&rarr;7)<br>
+        <span style="color:#E8644A;">&hearts;</span> 한 줄에 K&sim;A 13장을 모으면 자동 정리<br>
+        <span style="color:#E8644A;">&hearts;</span> 4개 세트 모두 정리하면 결혼 성공!
+      </div>
+    </div>
+  </div>
+
+  <div id="spider-container" style="display:none; max-width:460px; margin:0 auto; padding:0 8px;">
+    <div style="display:flex; justify-content:space-between; gap:6px; margin-bottom:8px;">
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 10px; flex:1; min-width:0;">
+        <div style="font-size:9px; color:#C9A96E; letter-spacing:1px;">DEALS</div>
+        <div style="font-size:15px; color:white; font-family:'Cormorant Garamond',serif;"><span id="spider-stock-count">3</span></div>
+      </div>
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 10px; flex:1; min-width:0;">
+        <div style="font-size:9px; color:#C9A96E; letter-spacing:1px;">DONE</div>
+        <div style="font-size:15px; color:white; font-family:'Cormorant Garamond',serif;"><span id="spider-completed">0</span>/4</div>
+      </div>
+      <button onclick="spiderDeal()" style="background:#C9A96E; color:white; border:none; border-radius:8px; padding:6px 12px; font-size:11px; font-family:inherit; cursor:pointer; letter-spacing:1px; font-weight:700;">DEAL</button>
+      <button onclick="restartSpider()" style="background:#888; color:white; border:none; border-radius:8px; padding:6px 12px; font-size:11px; font-family:inherit; cursor:pointer; letter-spacing:1px;">RESET</button>
+    </div>
+    <div id="spider-board" style="display:flex; gap:3px; justify-content:center; background:linear-gradient(135deg,#1a4d2e 0%,#0f3520 100%); padding:10px 6px; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.2); min-height:340px; align-items:flex-start;"></div>
+    <div id="spider-result" style="margin-top:14px; font-size:18px; color:#C9A96E; font-weight:bold; min-height:24px;"></div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-heart">&#x2665;</div>
@@ -2642,6 +2683,242 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
 
   var rc=document.getElementById('raceCanvas');
   if(rc)rc.addEventListener('click',function(){if(rGameOver||allClear)restartRace();});
+})();
+
+// ========== SPIDER SOLITAIRE ==========
+(function(){
+  var sCols, sStock, sCompleted, sSelected, sGameOver;
+  var NUM_COLS=7, NUM_DECKS=4;
+
+  window.startSpider=function(){
+    document.getElementById('spider-start').style.display='none';
+    document.getElementById('spider-container').style.display='block';
+    initSpider();
+  };
+  window.restartSpider=function(){ initSpider(); };
+
+  function initSpider(){
+    var deck=[];
+    for(var d=0; d<NUM_DECKS; d++){
+      for(var r=1; r<=13; r++) deck.push({rank:r, faceUp:false});
+    }
+    for(var i=deck.length-1; i>0; i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=deck[i]; deck[i]=deck[j]; deck[j]=tmp;
+    }
+    sCols=[];
+    var idx=0;
+    for(var c=0; c<NUM_COLS; c++){
+      sCols[c]=[];
+      var n=c<3?5:4;
+      for(var k=0; k<n; k++){
+        var card=deck[idx++];
+        if(k===n-1) card.faceUp=true;
+        sCols[c].push(card);
+      }
+    }
+    sStock=deck.slice(idx);
+    sCompleted=0;
+    sSelected=null;
+    sGameOver=false;
+    document.getElementById('spider-result').textContent='';
+    renderSpider();
+  }
+
+  function rankStr(r){
+    if(r===1) return 'A';
+    if(r===11) return 'J';
+    if(r===12) return 'Q';
+    if(r===13) return 'K';
+    return String(r);
+  }
+
+  function renderSpider(){
+    var board=document.getElementById('spider-board');
+    board.innerHTML='';
+    var bw=board.clientWidth||440;
+    var gap=3, pad=12;
+    var cardW=Math.max(36, Math.min(48, Math.floor((bw-pad-(NUM_COLS-1)*gap)/NUM_COLS)));
+    var cardH=Math.round(cardW*1.4);
+    var faceUpOff=Math.round(cardH*0.26);
+    var faceDownOff=Math.round(cardH*0.08);
+
+    for(var c=0; c<NUM_COLS; c++){
+      var col=sCols[c];
+      var colDiv=document.createElement('div');
+      var totalH=cardH;
+      var top=0;
+      for(var i=0; i<col.length; i++){
+        if(col[i].faceUp) totalH=top+cardH;
+        if(i<col.length-1){
+          top += col[i].faceUp ? faceUpOff : faceDownOff;
+        }
+      }
+      totalH=Math.max(cardH+8, top+cardH+8);
+      colDiv.style.cssText='position:relative; width:'+cardW+'px; height:'+totalH+'px; flex:0 0 auto;';
+
+      var holder=document.createElement('div');
+      holder.style.cssText='position:absolute; top:0; left:0; width:'+cardW+'px; height:'+cardH+'px; border:1.5px dashed rgba(201,169,110,0.5); border-radius:5px; cursor:pointer; box-sizing:border-box;';
+      (function(colIdx){
+        holder.addEventListener('click', function(){ onColumnClick(colIdx); });
+      })(c);
+      colDiv.appendChild(holder);
+
+      var y=0;
+      for(var i=0; i<col.length; i++){
+        var card=col[i];
+        var cardDiv=document.createElement('div');
+        if(card.faceUp){
+          var isSelected=sSelected && sSelected.col===c && i>=sSelected.idx;
+          var bg=isSelected?'#ffe8ec':'white';
+          var border=isSelected?'2px solid #C9A96E':'1px solid #d8c094';
+          var shadow=isSelected?'0 2px 8px rgba(201,169,110,0.6)':'0 1px 2px rgba(0,0,0,0.15)';
+          cardDiv.style.cssText='position:absolute; top:'+y+'px; left:0; width:'+cardW+'px; height:'+cardH+'px; background:'+bg+'; border:'+border+'; border-radius:5px; cursor:pointer; user-select:none; -webkit-user-select:none; color:#C0392B; box-sizing:border-box; box-shadow:'+shadow+'; padding:2px 3px; transition:transform 0.1s;';
+          var rs=rankStr(card.rank);
+          var fontSize=cardW>=44?12:10;
+          var heartSize=cardW>=44?16:13;
+          cardDiv.innerHTML='<div style="font-weight:700; font-size:'+fontSize+'px; line-height:1;">'+rs+'</div><div style="font-size:'+heartSize+'px; text-align:center; margin-top:'+(cardH>60?4:2)+'px;">&hearts;</div>';
+          (function(colIdx, cardIdx){
+            cardDiv.addEventListener('click', function(e){
+              e.stopPropagation();
+              onCardClick(colIdx, cardIdx);
+            });
+          })(c, i);
+        } else {
+          cardDiv.style.cssText='position:absolute; top:'+y+'px; left:0; width:'+cardW+'px; height:'+cardH+'px; background:linear-gradient(135deg,#a0142e 0%,#700a1c 100%); border:1px solid #5a0014; border-radius:5px; box-sizing:border-box;';
+          cardDiv.innerHTML='<div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#C9A96E; font-size:14px;">&hearts;</div>';
+        }
+        colDiv.appendChild(cardDiv);
+        if(i<col.length-1){
+          y += card.faceUp ? faceUpOff : faceDownOff;
+        }
+      }
+      board.appendChild(colDiv);
+    }
+
+    document.getElementById('spider-stock-count').textContent=Math.floor(sStock.length/NUM_COLS);
+    document.getElementById('spider-completed').textContent=sCompleted;
+  }
+
+  function canPickFrom(col, idx){
+    var c=sCols[col];
+    if(idx<0||idx>=c.length) return false;
+    if(!c[idx].faceUp) return false;
+    for(var i=idx; i<c.length-1; i++){
+      if(c[i].rank!==c[i+1].rank+1) return false;
+    }
+    return true;
+  }
+
+  function onCardClick(col, idx){
+    if(sGameOver) return;
+    var card=sCols[col][idx];
+    if(!card.faceUp) return;
+
+    if(sSelected){
+      if(sSelected.col===col && sSelected.idx===idx){
+        sSelected=null; renderSpider(); return;
+      }
+      if(sSelected.col===col){
+        if(canPickFrom(col, idx)){
+          sSelected={col:col, idx:idx};
+          renderSpider();
+        }
+        return;
+      }
+      tryMove(col);
+    } else {
+      if(canPickFrom(col, idx)){
+        sSelected={col:col, idx:idx};
+        renderSpider();
+      }
+    }
+  }
+
+  function onColumnClick(col){
+    if(sGameOver) return;
+    if(!sSelected) return;
+    tryMove(col);
+  }
+
+  function tryMove(toCol){
+    var fromCol=sSelected.col;
+    var fromIdx=sSelected.idx;
+    if(fromCol===toCol){ sSelected=null; renderSpider(); return; }
+    var movingCards=sCols[fromCol].slice(fromIdx);
+    var topMoving=movingCards[0];
+    var destCol=sCols[toCol];
+    var canMove=false;
+    if(destCol.length===0){
+      canMove=true;
+    } else {
+      var destTop=destCol[destCol.length-1];
+      if(destTop.faceUp && destTop.rank===topMoving.rank+1) canMove=true;
+    }
+    if(canMove){
+      sCols[fromCol]=sCols[fromCol].slice(0, fromIdx);
+      for(var i=0; i<movingCards.length; i++) destCol.push(movingCards[i]);
+      if(sCols[fromCol].length>0){
+        sCols[fromCol][sCols[fromCol].length-1].faceUp=true;
+      }
+      checkComplete(toCol);
+      if(sCompleted===NUM_DECKS){
+        sGameOver=true;
+        document.getElementById('spider-result').innerHTML='&#x1F389; 축하합니다! 클리어!';
+      }
+    }
+    sSelected=null;
+    renderSpider();
+  }
+
+  function checkComplete(col){
+    var c=sCols[col];
+    if(c.length<13) return;
+    var start=c.length-13;
+    for(var i=0; i<13; i++){
+      var card=c[start+i];
+      if(!card.faceUp || card.rank!==13-i) return;
+    }
+    sCols[col]=c.slice(0, start);
+    sCompleted++;
+    if(sCols[col].length>0){
+      sCols[col][sCols[col].length-1].faceUp=true;
+    }
+  }
+
+  window.spiderDeal=function(){
+    if(sGameOver) return;
+    if(sStock.length<NUM_COLS) return;
+    for(var c=0; c<NUM_COLS; c++){
+      if(sCols[c].length===0){
+        var rEl=document.getElementById('spider-result');
+        rEl.textContent='빈 줄에는 카드를 놓을 수 없습니다';
+        rEl.style.color='#E8644A';
+        setTimeout(function(){
+          var el=document.getElementById('spider-result');
+          el.textContent=''; el.style.color='#C9A96E';
+        }, 2000);
+        return;
+      }
+    }
+    for(var c=0; c<NUM_COLS; c++){
+      var card=sStock.shift();
+      card.faceUp=true;
+      sCols[c].push(card);
+    }
+    for(var c=0; c<NUM_COLS; c++) checkComplete(c);
+    sSelected=null;
+    if(sCompleted===NUM_DECKS){
+      sGameOver=true;
+      document.getElementById('spider-result').innerHTML='&#x1F389; 축하합니다! 클리어!';
+    }
+    renderSpider();
+  };
+
+  window.addEventListener('resize', function(){
+    var sc=document.getElementById('spider-container');
+    if(sc && sc.style.display!=='none' && sCols) renderSpider();
+  });
 })();
 </script>
 </body>
