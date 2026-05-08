@@ -1209,6 +1209,76 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </section>
 
+<!-- Hogyu vs Eunwoo Battle -->
+<section class="game-section animate-on-scroll" style="background:var(--warm-white); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">호규 VS 은우</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">최강의 친구는 누구? 펀치로 결판내자!</p>
+  <div class="divider"></div>
+
+  <div id="hve-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f0f1e 100%); border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#C9A96E; letter-spacing:4px; margin-bottom:8px;">FRIEND</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:42px; color:white; letter-spacing:6px; margin-bottom:6px;">BATTLE</div>
+      <div style="font-size:13px; color:#888; margin-bottom:24px;">호규 vs 은우 펀치 배틀</div>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <button onclick="startHvE('1p')" style="padding:14px 30px; background:#C9A96E; color:white; border:none; border-radius:30px; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:2px; box-shadow:0 4px 15px rgba(201,169,110,0.4);">vs AI</button>
+        <button onclick="startHvE('2p')" style="padding:14px 30px; background:#4A90D9; color:white; border:none; border-radius:30px; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:2px; box-shadow:0 4px 15px rgba(74,144,217,0.4);">2P 대전</button>
+      </div>
+      <div style="margin-top:24px; padding:0 10px; font-size:11px; color:#aaa; line-height:1.9; text-align:left;">
+        <div style="color:#C9A96E; letter-spacing:2px; text-align:center; margin-bottom:10px;">HOW TO PLAY</div>
+        <span style="color:#4A90D9;">&#9899;</span> 본인 캐릭터 버튼을 빠르게 연타하세요<br>
+        <span style="color:#4A90D9;">&#9899;</span> 한 방에 5~12 데미지 (랜덤)<br>
+        <span style="color:#4A90D9;">&#9899;</span> 5% 확률로 크리티컬! (2배 데미지)<br>
+        <span style="color:#4A90D9;">&#9899;</span> 공격 후 0.25초 쿨다운<br>
+        <span style="color:#4A90D9;">&#9899;</span> 상대 HP를 0으로 만들면 승리!
+      </div>
+    </div>
+  </div>
+
+  <div id="hve-container" style="display:none; max-width:460px; margin:0 auto; padding:0 16px;">
+    <div style="background:linear-gradient(180deg,#0f1726 0%,#1a2238 60%, #2d3a55 100%); border-radius:12px; padding:14px 12px 18px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:14px;">
+        <div style="flex:1; text-align:left;">
+          <div style="font-size:11px; color:#4A90D9; letter-spacing:2px; font-weight:700; margin-bottom:4px;">HOGYU 호규</div>
+          <div style="background:rgba(0,0,0,0.4); border-radius:6px; height:14px; overflow:hidden; position:relative;">
+            <div id="hve-hp1" style="background:linear-gradient(90deg,#4A90D9,#5fb0f5); height:100%; width:100%; transition:width 0.3s;"></div>
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:700; text-shadow:1px 1px 2px rgba(0,0,0,0.7);"><span id="hve-hp1-text">100</span></div>
+          </div>
+        </div>
+        <div style="flex:1; text-align:right;">
+          <div style="font-size:11px; color:#E8644A; letter-spacing:2px; font-weight:700; margin-bottom:4px;">EUNWOO 은우</div>
+          <div style="background:rgba(0,0,0,0.4); border-radius:6px; height:14px; overflow:hidden; position:relative;">
+            <div id="hve-hp2" style="background:linear-gradient(90deg,#E8644A,#f58a72); height:100%; width:100%; transition:width 0.3s;"></div>
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:700; text-shadow:1px 1px 2px rgba(0,0,0,0.7);"><span id="hve-hp2-text">100</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="hve-arena" style="position:relative; height:180px; background:linear-gradient(180deg,rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.08) 100%); border-radius:8px; overflow:hidden;">
+        <div style="position:absolute; bottom:0; left:0; right:0; height:30px; background:linear-gradient(180deg,#3d2c1e,#2a1d12);"></div>
+        <div id="hve-char1" style="position:absolute; bottom:30px; left:18%; width:70px; height:90px; transition:transform 0.1s;">
+          <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:60px; height:78px; background:linear-gradient(180deg,#5fb0f5 0%,#3a7bc4 100%); border-radius:30px 30px 18px 18px; border:2px solid #2c5d96; display:flex; align-items:center; justify-content:center; font-size:30px;">&#x1F60E;</div>
+          <div style="position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); font-size:9px; color:white; font-weight:700; background:rgba(0,0,0,0.5); padding:1px 6px; border-radius:3px; white-space:nowrap;">호규</div>
+        </div>
+        <div id="hve-char2" style="position:absolute; bottom:30px; right:18%; width:70px; height:90px; transition:transform 0.1s;">
+          <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:60px; height:78px; background:linear-gradient(180deg,#f58a72 0%,#c43e2a 100%); border-radius:30px 30px 18px 18px; border:2px solid #862718; display:flex; align-items:center; justify-content:center; font-size:30px;">&#x1F621;</div>
+          <div style="position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); font-size:9px; color:white; font-weight:700; background:rgba(0,0,0,0.5); padding:1px 6px; border-radius:3px; white-space:nowrap;">은우</div>
+        </div>
+        <div id="hve-vs" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'Cormorant Garamond',serif; font-size:36px; color:rgba(201,169,110,0.3); font-weight:700; letter-spacing:4px; pointer-events:none;">VS</div>
+      </div>
+
+      <div id="hve-result" style="margin-top:10px; min-height:24px; font-size:18px; color:#C9A96E; font-weight:bold; text-shadow:1px 1px 2px rgba(0,0,0,0.5);"></div>
+
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button id="hve-btn-1" onclick="hveAttack(1)" style="flex:1; padding:18px 0; background:linear-gradient(180deg,#4A90D9,#3a7bc4); color:white; border:2px solid #2c5d96; border-radius:10px; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:1px; font-weight:700; box-shadow:0 4px 0 #2c5d96; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;">호규 펀치 &#x1F44A;</button>
+        <button id="hve-btn-2" onclick="hveAttack(2)" style="flex:1; padding:18px 0; background:linear-gradient(180deg,#E8644A,#c43e2a); color:white; border:2px solid #862718; border-radius:10px; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:1px; font-weight:700; box-shadow:0 4px 0 #862718; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;">은우 펀치 &#x1F44A;</button>
+      </div>
+      <button onclick="resetHvE()" style="margin-top:10px; padding:8px 24px; background:rgba(255,255,255,0.1); color:white; border:1px solid rgba(255,255,255,0.3); border-radius:8px; font-size:11px; font-family:inherit; cursor:pointer; letter-spacing:2px;">RESET</button>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-heart">&#x2665;</div>
@@ -2918,6 +2988,172 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
   window.addEventListener('resize', function(){
     var sc=document.getElementById('spider-container');
     if(sc && sc.style.display!=='none' && sCols) renderSpider();
+  });
+})();
+
+// ========== HOGYU vs EUNWOO BATTLE ==========
+(function(){
+  var hp1, hp2, hveOver, hveMode, aiTimer, cd1, cd2;
+
+  function resetHvE(){
+    hp1=100; hp2=100;
+    hveOver=false;
+    cd1=0; cd2=0;
+    if(aiTimer){ clearTimeout(aiTimer); aiTimer=null; }
+    document.getElementById('hve-result').textContent='';
+    var c1=document.getElementById('hve-char1');
+    var c2=document.getElementById('hve-char2');
+    c1.style.transform='';
+    c2.style.transform='';
+    c1.style.opacity='1';
+    c2.style.opacity='1';
+    var c1Inner=c1.firstElementChild;
+    var c2Inner=c2.firstElementChild;
+    c1Inner.innerHTML='&#x1F60E;';
+    c2Inner.innerHTML='&#x1F621;';
+    updateHvE();
+    if(hveMode==='1p') scheduleAI();
+  }
+  window.resetHvE=resetHvE;
+
+  window.startHvE=function(mode){
+    hveMode=mode;
+    document.getElementById('hve-start').style.display='none';
+    document.getElementById('hve-container').style.display='block';
+    var btn2=document.getElementById('hve-btn-2');
+    if(mode==='1p'){
+      btn2.style.opacity='0.4';
+      btn2.style.cursor='not-allowed';
+      btn2.disabled=true;
+    } else {
+      btn2.style.opacity='1';
+      btn2.style.cursor='pointer';
+      btn2.disabled=false;
+    }
+    resetHvE();
+  };
+
+  function scheduleAI(){
+    if(hveOver) return;
+    var delay=600+Math.random()*700;
+    aiTimer=setTimeout(function(){
+      if(!hveOver){
+        doAttack(2);
+        scheduleAI();
+      }
+    }, delay);
+  }
+
+  function updateHvE(){
+    document.getElementById('hve-hp1').style.width=Math.max(0,hp1)+'%';
+    document.getElementById('hve-hp2').style.width=Math.max(0,hp2)+'%';
+    document.getElementById('hve-hp1-text').textContent=Math.max(0,hp1);
+    document.getElementById('hve-hp2-text').textContent=Math.max(0,hp2);
+  }
+
+  function checkWin(){
+    if(hp1<=0 || hp2<=0){
+      hveOver=true;
+      if(aiTimer){ clearTimeout(aiTimer); aiTimer=null; }
+      var winner = hp1<=0 ? '은우' : '호규';
+      var loserId = hp1<=0 ? 'hve-char1' : 'hve-char2';
+      var loserEl=document.getElementById(loserId);
+      var loserInner=loserEl.firstElementChild;
+      loserInner.innerHTML='&#x1F4AB;';
+      loserEl.style.transition='transform 0.5s, opacity 0.5s';
+      loserEl.style.transform=(loserId==='hve-char1'?'rotate(-80deg) translateY(20px)':'rotate(80deg) translateY(20px)');
+      loserEl.style.opacity='0.6';
+      document.getElementById('hve-result').innerHTML='&#x1F3C6; '+winner+' 승리!';
+    }
+  }
+
+  window.hveAttack=function(side){
+    if(hveOver) return;
+    if(side===2 && hveMode==='1p') return;
+    doAttack(side);
+  };
+
+  function doAttack(side){
+    if(hveOver) return;
+    var now=Date.now();
+    if(side===1){
+      if(now-cd1<250) return;
+      cd1=now;
+    } else {
+      if(now-cd2<250) return;
+      cd2=now;
+    }
+    var crit=Math.random()<0.05;
+    var dmg=5+Math.floor(Math.random()*8);
+    if(crit) dmg*=2;
+    if(side===1){
+      hp2-=dmg;
+      animPunch('hve-char1','right');
+      animHit('hve-char2','left',dmg,crit);
+    } else {
+      hp1-=dmg;
+      animPunch('hve-char2','left');
+      animHit('hve-char1','right',dmg,crit);
+    }
+    updateHvE();
+    checkWin();
+  }
+
+  function animPunch(charId, dir){
+    var c=document.getElementById(charId);
+    if(!c) return;
+    var dx=dir==='right'?20:-20;
+    c.style.transition='transform 0.08s';
+    c.style.transform='translateX('+dx+'px) translateY(-4px)';
+    setTimeout(function(){
+      c.style.transition='transform 0.15s';
+      c.style.transform='';
+    }, 90);
+  }
+
+  function animHit(charId, dir, dmg, crit){
+    var c=document.getElementById(charId);
+    if(!c) return;
+    setTimeout(function(){
+      var dx=dir==='right'?10:-10;
+      c.style.transition='transform 0.06s';
+      var orig=c.style.transform;
+      var seq=[dx,-dx,dx*0.6,-dx*0.6,0];
+      var i=0;
+      function step(){
+        if(i>=seq.length){ return; }
+        c.style.transform='translateX('+seq[i]+'px)';
+        i++;
+        setTimeout(step,55);
+      }
+      step();
+      var dmgEl=document.createElement('div');
+      var color=crit?'#FFD700':'#E8644A';
+      var size=crit?22:16;
+      var label=crit?'CRIT! -':'-';
+      dmgEl.style.cssText='position:absolute; top:-10px; left:50%; transform:translateX(-50%); color:'+color+'; font-weight:900; font-size:'+size+'px; text-shadow:1px 1px 3px rgba(0,0,0,0.8); pointer-events:none; transition:all 0.7s cubic-bezier(.2,.8,.2,1); white-space:nowrap; z-index:5;';
+      dmgEl.textContent=label+dmg;
+      c.appendChild(dmgEl);
+      setTimeout(function(){
+        dmgEl.style.top='-50px';
+        dmgEl.style.opacity='0';
+      }, 10);
+      setTimeout(function(){ if(dmgEl.parentNode) dmgEl.parentNode.removeChild(dmgEl); }, 800);
+      var arena=document.getElementById('hve-arena');
+      if(arena){
+        arena.style.transition='transform 0.05s';
+        arena.style.transform='translateX('+(Math.random()>0.5?3:-3)+'px)';
+        setTimeout(function(){ arena.style.transform=''; }, 60);
+      }
+    }, 80);
+  }
+
+  document.addEventListener('keydown', function(e){
+    var hc=document.getElementById('hve-container');
+    if(!hc || hc.style.display==='none') return;
+    if(hveOver && (e.key==='r'||e.key==='R')){ resetHvE(); return; }
+    if(e.key==='a'||e.key==='A'||e.key==='ArrowLeft'){ e.preventDefault(); hveAttack(1); }
+    else if(e.key==='l'||e.key==='L'||e.key==='ArrowRight'){ e.preventDefault(); hveAttack(2); }
   });
 })();
 </script>
