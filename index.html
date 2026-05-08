@@ -1346,6 +1346,66 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </section>
 
+<!-- Punch 건희 (stress reliever) -->
+<section class="game-section animate-on-scroll" style="background:var(--cream); padding:60px 0 80px; text-align:center;">
+  <div class="section-title">Mini Game</div>
+  <div class="section-heading" style="margin-bottom:10px;">Punch 건희</div>
+  <p style="font-size:13px; color:var(--text-light); margin-bottom:20px;">신랑이 잘못한 거 있으세요? 30초 동안 시원하게 풀어보세요! (장난용 ☺)</p>
+  <div class="divider"></div>
+
+  <div id="punch-start" style="max-width:460px; margin:0 auto; padding:0 20px;">
+    <div style="background:linear-gradient(135deg,#3a1a1a 0%,#1a0a0a 100%); border-radius:12px; padding:40px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:#FFD700; letter-spacing:4px; margin-bottom:8px;">PUNCH</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:42px; color:white; letter-spacing:6px; margin-bottom:12px;">건희</div>
+      <div style="font-size:13px; color:#E8B5B5; margin-bottom:24px;">30초 스트레스 펀칭백</div>
+      <button onclick="startPunch()" style="padding:14px 50px; background:#E8644A; color:white; border:none; border-radius:30px; font-size:16px; font-family:inherit; cursor:pointer; letter-spacing:3px; transition:all 0.3s; box-shadow:0 4px 15px rgba(232,100,74,0.4);">START</button>
+      <div style="margin-top:24px; padding:0 10px; font-size:11px; color:#aaa; line-height:1.9; text-align:left;">
+        <div style="color:#FFD700; letter-spacing:2px; text-align:center; margin-bottom:10px;">HOW TO PLAY</div>
+        <span style="color:#FF6B6B;">★</span> 사진을 마구 탭/클릭해서 데미지!<br>
+        <span style="color:#FF6B6B;">★</span> 빠르게 연타하면 콤보 ↑ → 데미지 배율 ↑<br>
+        <span style="color:#FF6B6B;">★</span> 10% 확률 크리티컬(2.5배 + 황금 데미지)<br>
+        <span style="color:#FF6B6B;">★</span> KO 시키면 +100점 보너스 (자동 부활)<br>
+        <span style="color:#FF6B6B;">★</span> 30초 안에 최고 점수 도전!
+      </div>
+    </div>
+  </div>
+
+  <div id="punch-container" style="display:none; max-width:460px; margin:0 auto; padding:0 10px;">
+    <div style="display:flex; justify-content:space-between; gap:6px; margin-bottom:8px;">
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 10px; flex:1;">
+        <div style="font-size:9px; color:#FFD700; letter-spacing:1px;">TIME</div>
+        <div id="punch-time" style="font-size:15px; color:white; font-family:'Cormorant Garamond',serif;">30.0</div>
+      </div>
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 10px; flex:1;">
+        <div style="font-size:9px; color:#FFD700; letter-spacing:1px;">COMBO</div>
+        <div id="punch-combo" style="font-size:15px; color:white; font-family:'Cormorant Garamond',serif;">0</div>
+      </div>
+      <div style="background:#1a1a2e; border-radius:8px; padding:6px 10px; flex:1;">
+        <div style="font-size:9px; color:#FFD700; letter-spacing:1px;">SCORE</div>
+        <div id="punch-score" style="font-size:15px; color:white; font-family:'Cormorant Garamond',serif;">0</div>
+      </div>
+      <button onclick="restartPunch()" style="background:#888; color:white; border:none; border-radius:8px; padding:6px 12px; font-size:11px; font-family:inherit; cursor:pointer; letter-spacing:1px;">RESET</button>
+    </div>
+    <div style="background:#1a1a2e; border-radius:8px; padding:8px 12px; margin-bottom:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:10px; color:#FFD700; margin-bottom:4px;">
+        <span>HP</span><span id="punch-hp-text" style="color:white; font-family:'Cormorant Garamond',serif;">100/100</span>
+      </div>
+      <div style="background:#3a1a1a; border-radius:4px; height:10px; overflow:hidden;">
+        <div id="punch-hp-fill" style="background:linear-gradient(90deg,#E8644A,#FFD700); height:100%; width:100%; transition:width 0.2s;"></div>
+      </div>
+    </div>
+    <div id="punch-stage" style="position:relative; background:radial-gradient(ellipse at center,#3a1a2a 0%,#1a0a14 100%); border-radius:12px; padding:30px 20px; box-shadow:0 8px 30px rgba(0,0,0,0.3); cursor:pointer; user-select:none; -webkit-user-select:none; overflow:hidden; min-height:340px;">
+      <img id="punch-target" src="groom.jpg" alt="건희" draggable="false" style="max-width:280px; width:90%; border-radius:50%; border:6px solid #FFD700; box-shadow:0 4px 20px rgba(255,215,0,0.4); transition:transform 0.15s, filter 0.2s; pointer-events:none; user-drag:none; -webkit-user-drag:none;">
+      <div id="punch-overlay" style="position:absolute; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:center;"></div>
+    </div>
+    <div id="punch-result" style="margin-top:14px; font-size:16px; color:#E8644A; font-weight:bold; min-height:24px; line-height:1.6;"></div>
+    <div style="text-align:center; margin-top:10px;">
+      <button onclick="punchAttack()" style="padding:14px 40px; background:#E8644A; color:white; border:none; border-radius:30px; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:3px; box-shadow:0 4px 15px rgba(232,100,74,0.4); font-weight:700;">PUNCH!</button>
+      <div style="font-size:10px; color:var(--text-light); margin-top:6px;">사진을 직접 탭/클릭해도 됩니다</div>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-heart">&#x2665;</div>
@@ -4093,6 +4153,241 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wireMobile);
   else setTimeout(wireMobile, 0);
+})();
+
+// ===== Punch 건희 (stress reliever) =====
+(function(){
+  var maxHp=100;
+  var hp, time, score, combo, comboTimer;
+  var running=false, ko=false, koTimer=0;
+  var stats={totalHits:0, maxCombo:0, crits:0, kos:0};
+  var rafId=null, lastTime=0;
+
+  function start(){
+    hp=maxHp; time=30; score=0; combo=0; comboTimer=0;
+    ko=false; koTimer=0;
+    stats={totalHits:0, maxCombo:0, crits:0, kos:0};
+    running=true;
+    var st=document.getElementById('punch-start');
+    var co=document.getElementById('punch-container');
+    if(st) st.style.display='none';
+    if(co) co.style.display='block';
+    var rEl=document.getElementById('punch-result');
+    if(rEl) rEl.innerHTML='';
+    var t=document.getElementById('punch-target');
+    if(t){ t.style.transform=''; t.style.filter=''; t.style.opacity='1'; }
+    update();
+    if(rafId) cancelAnimationFrame(rafId);
+    lastTime=performance.now();
+    rafId=requestAnimationFrame(loop);
+  }
+  window.startPunch=start;
+  window.restartPunch=start;
+
+  function loop(now){
+    rafId=requestAnimationFrame(loop);
+    var co=document.getElementById('punch-container');
+    if(!co || co.style.display==='none') return;
+    var dt=Math.min(0.05,(now-lastTime)/1000);
+    if(dt<0) dt=0;
+    lastTime=now;
+    if(!running) return;
+    time-=dt;
+    if(comboTimer>0){
+      comboTimer-=dt;
+      if(comboTimer<=0) combo=0;
+    }
+    if(ko){
+      koTimer-=dt;
+      if(koTimer<=0){
+        ko=false; hp=maxHp;
+        var t=document.getElementById('punch-target');
+        if(t){
+          t.style.transition='all 0.3s';
+          t.style.transform='';
+          t.style.filter='';
+          t.style.opacity='1';
+        }
+      }
+    }
+    if(time<=0){ end(); return; }
+    update();
+  }
+
+  function attack(clientX, clientY){
+    if(!running || ko) return;
+    var crit=Math.random()<0.1;
+    var base=5+Math.floor(Math.random()*5);
+    var mult=1 + combo*0.05;
+    var dmg=Math.floor(base * mult * (crit?2.5:1));
+    hp-=dmg;
+    score+=dmg;
+    combo+=1;
+    comboTimer=1.5;
+    stats.totalHits++;
+    if(crit) stats.crits++;
+    if(combo>stats.maxCombo) stats.maxCombo=combo;
+    spawnPopup(clientX, clientY, dmg, crit);
+    shake();
+    if(hp<=0){
+      hp=0;
+      ko=true;
+      koTimer=1.4;
+      score+=100;
+      stats.kos++;
+      koAnim();
+    }
+    update();
+  }
+
+  function spawnPopup(clientX, clientY, dmg, crit){
+    var stage=document.getElementById('punch-stage');
+    if(!stage) return;
+    var rect=stage.getBoundingClientRect();
+    var px, py;
+    if(typeof clientX==='number' && typeof clientY==='number'){
+      px=clientX-rect.left; py=clientY-rect.top;
+    } else {
+      px=rect.width/2 + (Math.random()-0.5)*80;
+      py=rect.height/2 + (Math.random()-0.5)*80;
+    }
+    var el=document.createElement('div');
+    el.style.cssText='position:absolute; left:'+px+'px; top:'+py+'px; pointer-events:none; font-weight:900; transform:translate(-50%,-50%); transition:top 0.7s cubic-bezier(.2,.8,.2,1), opacity 0.7s ease-out; z-index:5; white-space:nowrap;';
+    el.style.color = crit?'#FFD700':'#FF6B6B';
+    el.style.fontSize = (crit?28:20)+'px';
+    el.style.textShadow = '2px 2px 4px rgba(0,0,0,0.7)';
+    el.textContent = (crit?'CRIT! -':'-')+dmg;
+    stage.appendChild(el);
+    setTimeout(function(){ el.style.top=(py-70)+'px'; el.style.opacity='0'; },10);
+    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); },800);
+    var icons=['💥','✨','💢','⚡','★'];
+    for(var i=0;i<5;i++){
+      (function(){
+        var p=document.createElement('div');
+        var ang=Math.random()*Math.PI*2, r=24+Math.random()*40;
+        p.style.cssText='position:absolute; left:'+px+'px; top:'+py+'px; pointer-events:none; font-size:'+(12+Math.random()*8)+'px; transform:translate(-50%,-50%); transition:all 0.6s ease-out; z-index:4;';
+        p.textContent=icons[Math.floor(Math.random()*icons.length)];
+        stage.appendChild(p);
+        var tx=px+Math.cos(ang)*r, ty=py+Math.sin(ang)*r;
+        setTimeout(function(){ p.style.left=tx+'px'; p.style.top=ty+'px'; p.style.opacity='0'; },10);
+        setTimeout(function(){ if(p.parentNode) p.parentNode.removeChild(p); },650);
+      })();
+    }
+  }
+
+  function shake(){
+    var t=document.getElementById('punch-target');
+    var stage=document.getElementById('punch-stage');
+    if(!t || !stage) return;
+    var x=(Math.random()-0.5)*16;
+    var y=(Math.random()-0.5)*8;
+    var rot=(Math.random()-0.5)*8;
+    t.style.transition='transform 0.05s';
+    t.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg) scale(0.96)';
+    setTimeout(function(){
+      t.style.transition='transform 0.18s cubic-bezier(.2,.8,.2,1.2)';
+      t.style.transform='';
+    },70);
+    stage.style.transition='transform 0.05s';
+    stage.style.transform='translate('+(x*0.3)+'px,'+(y*0.3)+'px)';
+    setTimeout(function(){ stage.style.transform=''; },70);
+  }
+
+  function koAnim(){
+    var t=document.getElementById('punch-target');
+    if(!t) return;
+    t.style.transition='transform 0.4s, filter 0.4s, opacity 0.4s';
+    t.style.transform='rotate(-25deg) translate(0,30px) scale(0.9)';
+    t.style.filter='grayscale(0.7) brightness(0.7)';
+    showStarBurst();
+  }
+
+  function showStarBurst(){
+    var stage=document.getElementById('punch-stage');
+    if(!stage) return;
+    var rect=stage.getBoundingClientRect();
+    var cx=rect.width/2, cy=rect.height/2;
+    var ko=document.createElement('div');
+    ko.style.cssText='position:absolute; left:'+cx+'px; top:'+cy+'px; transform:translate(-50%,-50%) scale(0.2); transition:transform 0.3s cubic-bezier(.2,.8,.2,1.4), opacity 0.3s; font-family:Impact,sans-serif; font-size:54px; color:#FFD700; font-weight:900; text-shadow:3px 3px 0 #000, -1px -1px 0 #000; z-index:6; letter-spacing:4px; pointer-events:none;';
+    ko.textContent='K.O.';
+    stage.appendChild(ko);
+    setTimeout(function(){ ko.style.transform='translate(-50%,-50%) scale(1)'; },10);
+    setTimeout(function(){ ko.style.opacity='0'; },900);
+    setTimeout(function(){ if(ko.parentNode) ko.parentNode.removeChild(ko); },1200);
+    for(var i=0;i<8;i++){
+      (function(i){
+        var s=document.createElement('div');
+        var ang=i*Math.PI/4, r=80+Math.random()*40;
+        s.style.cssText='position:absolute; left:'+cx+'px; top:'+cy+'px; transform:translate(-50%,-50%); transition:all 0.7s ease-out; font-size:24px; z-index:5; pointer-events:none;';
+        s.textContent='⭐';
+        stage.appendChild(s);
+        setTimeout(function(){
+          s.style.left=(cx+Math.cos(ang)*r)+'px';
+          s.style.top=(cy+Math.sin(ang)*r)+'px';
+          s.style.opacity='0';
+        },10);
+        setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); },750);
+      })(i);
+    }
+  }
+
+  function update(){
+    var hpPct=Math.max(0,hp)/maxHp*100;
+    var fill=document.getElementById('punch-hp-fill');
+    if(fill) fill.style.width=hpPct+'%';
+    var hpT=document.getElementById('punch-hp-text');
+    if(hpT) hpT.textContent=Math.max(0,Math.ceil(hp))+'/'+maxHp;
+    var tT=document.getElementById('punch-time');
+    if(tT) tT.textContent=Math.max(0,time).toFixed(1);
+    var sT=document.getElementById('punch-score');
+    if(sT) sT.textContent=score;
+    var cT=document.getElementById('punch-combo');
+    if(cT){
+      cT.textContent=combo>0?('x'+combo):'0';
+      if(combo>=10) cT.style.color='#FFD700';
+      else if(combo>=5) cT.style.color='#FFB6C1';
+      else cT.style.color='white';
+    }
+    var t=document.getElementById('punch-target');
+    if(t && !ko){
+      var redness=1-Math.max(0,hp)/maxHp;
+      t.style.filter='hue-rotate('+(-redness*15)+'deg) saturate('+(1+redness*0.7)+') brightness('+(1-redness*0.15)+')';
+    }
+  }
+
+  function end(){
+    running=false;
+    var msg='🏆 시간 종료!<br>최종 점수 <b>'+score+'</b><br><span style="font-size:13px; color:var(--text-medium);">최대 콤보 x'+stats.maxCombo+' · 크리 '+stats.crits+'회 · KO '+stats.kos+'회</span>';
+    var rEl=document.getElementById('punch-result');
+    if(rEl) rEl.innerHTML=msg;
+  }
+
+  window.punchAttack=function(){
+    var stage=document.getElementById('punch-stage');
+    if(!stage) return;
+    var rect=stage.getBoundingClientRect();
+    attack(rect.left+rect.width/2+(Math.random()-0.5)*120, rect.top+rect.height/2+(Math.random()-0.5)*150);
+  };
+
+  function wirePunch(){
+    var stage=document.getElementById('punch-stage');
+    if(!stage || stage._wired) return;
+    stage._wired=true;
+    stage.addEventListener('mousedown', function(e){
+      if(e.target.closest('button')) return;
+      e.preventDefault();
+      attack(e.clientX, e.clientY);
+    });
+    stage.addEventListener('touchstart', function(e){
+      if(e.target.closest && e.target.closest('button')) return;
+      e.preventDefault();
+      var t=e.touches[0]; if(!t) return;
+      attack(t.clientX, t.clientY);
+    }, {passive:false});
+    stage.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wirePunch);
+  else setTimeout(wirePunch,0);
 })();
 </script>
 </body>
