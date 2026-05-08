@@ -3394,6 +3394,7 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
     if(b.owner) b.owner.activeBombs=Math.max(0,b.owner.activeBombs-1);
     var cells=[{gx:b.gx,gy:b.gy,d:'c'}];
     var dirs=[[1,0,'h'],[-1,0,'h'],[0,1,'v'],[0,-1,'v']];
+    var newItems=[];
     for(var di=0;di<4;di++){
       var dx=dirs[di][0], dy=dirs[di][1], or=dirs[di][2];
       for(var k=1;k<=b.power;k++){
@@ -3404,30 +3405,30 @@ document.getElementById('fightCanvas').addEventListener('click', function() {
         cells.push({gx:nx,gy:ny,d:or, end:k===b.power});
         if(c===2){
           grid[ny][nx]=0;
-          if(Math.random()<0.4){
+          if(Math.random()<0.5){
             var t=Math.random();
             var type=t<0.4?'bomb':(t<0.75?'power':'speed');
-            items.push({gx:nx,gy:ny,type:type});
+            newItems.push({gx:nx,gy:ny,type:type});
           }
           break;
         }
-        // chain other bombs
         var ob=bombAt(nx,ny);
         if(ob){ ob.fuse=Math.min(ob.fuse,0.05); }
       }
     }
     explosions.push({cells:cells, life:0.55});
-    // hit players
     for(var i=0;i<cells.length;i++){
       checkHit(cells[i].gx, cells[i].gy);
     }
-    // pop items hit
+    // pop pre-existing items hit by this explosion (but keep newly-spawned ones)
     items=items.filter(function(it){
       for(var j=0;j<cells.length;j++){
         if(cells[j].gx===it.gx && cells[j].gy===it.gy) return false;
       }
       return true;
     });
+    // append items dropped from destroyed boxes
+    for(var ni=0;ni<newItems.length;ni++) items.push(newItems[ni]);
   }
 
   function checkHit(gx,gy){
